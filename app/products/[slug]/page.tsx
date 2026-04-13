@@ -6,6 +6,7 @@ import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ProductDetailPage({
   params,
@@ -144,9 +145,10 @@ export default async function ProductDetailPage({
                 </Link>
               ) : (
                 <>
-                  <button className="flex-1 rounded-2xl border border-slate-300 bg-white px-5 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-50">
-                    장바구니 담기
-                  </button>
+                  <AddToCartButton
+  product={product}
+  className="flex-1 rounded-2xl border border-slate-300 bg-white px-5 py-4 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+/>
                   <Link
                     href="/quote"
                     className="flex-1 rounded-2xl bg-slate-900 px-5 py-4 text-center text-sm font-semibold text-white hover:bg-slate-800"

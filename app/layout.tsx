@@ -1,27 +1,22 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { companyInfo } from "@/lib/data";
+import type { Metadata } from "next";
+import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
-  title: companyInfo.metaTitle,
-  description: companyInfo.metaDescription,
-  alternates: {
-    canonical: companyInfo.domain,
-  },
-  openGraph: {
-    title: companyInfo.metaTitle,
-    description: companyInfo.metaDescription,
-    url: companyInfo.domain,
-    siteName: companyInfo.companyName,
-    locale: "ko_KR",
-    type: "website",
-  },
+  title: "씨케이코리아",
+  description: "건축자재 도소매 온라인몰",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }
