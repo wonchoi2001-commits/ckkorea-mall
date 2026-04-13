@@ -1,5 +1,5 @@
 export type ProductType = "즉시결제" | "견적문의";
-export type ShippingType = "택배" | "화물배송" | "매장픽업" | "현장납품문의";
+export type ShippingType = "택배" | "화물배송";
 
 export type Product = {
   id: number;
@@ -10,12 +10,28 @@ export type Product = {
   spec: string;
   unit: string;
   price: number | null;
-  type: string;
-  shipping: string;
+  type: ProductType;
+  shipping: ShippingType;
   stock: string;
   desc: string;
   image: string;
   featured?: boolean;
+};
+
+export type CartItem = {
+  product: Product;
+  quantity: number;
+};
+
+export type CartContextType = {
+  cartItems: CartItem[];
+  totalCount: number;
+  totalPrice: number;
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: number) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
+  clearCart: () => void;
 };
 
 export type CompanyInfo = {

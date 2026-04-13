@@ -7,18 +7,19 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-md">
       <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative h-56 w-full bg-slate-100">
+        <div className="relative h-52 w-full bg-slate-100">
           <Image
             src={product.image}
             alt={product.name}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
       </Link>
 
       <div className="p-5">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
+        <div className="mb-3 flex items-center gap-2">
           <span
             className={`rounded-full px-3 py-1 text-xs font-semibold ${
               product.price === null
@@ -28,56 +29,51 @@ export default function ProductCard({ product }: { product: Product }) {
           >
             {product.type}
           </span>
-
           <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
             {product.shipping}
-          </span>
-
-          <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
-            {product.category}
           </span>
         </div>
 
         <Link href={`/products/${product.slug}`} className="block">
-          <div className="line-clamp-2 text-lg font-bold leading-7 text-slate-900 hover:text-slate-700">
+          <div className="text-lg font-bold leading-7 text-slate-900 hover:underline">
             {product.name}
           </div>
         </Link>
 
         <div className="mt-1 text-sm text-slate-500">{product.brand}</div>
-        <div className="mt-3 text-sm text-slate-600">규격: {product.spec}</div>
+        <div className="mt-2 text-sm text-slate-600">규격: {product.spec}</div>
         <div className="text-sm text-slate-600">판매단위: {product.unit}</div>
-
         <div className="mt-3 min-h-[48px] text-sm leading-6 text-slate-500">
           {product.desc}
         </div>
-
-        <div className="mt-5 border-t border-slate-100 pt-4">
-          <div className="text-2xl font-black text-slate-900">
-            {formatPrice(product.price)}
-          </div>
-          <div className="mt-1 text-xs text-slate-500">{product.stock}</div>
+        <div className="mt-4 text-2xl font-black text-slate-900">
+          {formatPrice(product.price)}
         </div>
+        <div className="mt-1 text-xs text-slate-500">{product.stock}</div>
 
         <div className="mt-5 flex gap-2">
-          <Link
-            href={`/products/${product.slug}`}
-            className="flex-1 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
-          >
-            상세보기
-          </Link>
-
           {product.price === null ? (
             <Link
               href="/quote"
-              className="flex-1 rounded-2xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
+              className="w-full rounded-2xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
             >
               견적문의
             </Link>
           ) : (
-            <button className="flex-1 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800">
-              담기
-            </button>
+            <>
+              <Link
+                href={`/products/${product.slug}`}
+                className="flex-1 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-50"
+              >
+                상세보기
+              </Link>
+              <Link
+                href={`/products/${product.slug}`}
+                className="flex-1 rounded-2xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
+              >
+                바로확인
+              </Link>
+            </>
           )}
         </div>
       </div>
