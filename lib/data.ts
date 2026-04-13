@@ -32,6 +32,7 @@ export const categories = [
 export const products: Product[] = [
   {
     id: 1,
+    slug: "industrial-silicone-300ml",
     name: "산업용 실리콘 300ml",
     category: "실리콘/접착제",
     brand: "CK",
@@ -47,6 +48,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
+    slug: "anchor-bolt-set",
     name: "앙카 볼트 세트",
     category: "철물/부속",
     brand: "CK",
@@ -62,6 +64,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
+    slug: "pvc-pipe",
     name: "PVC 배관 파이프",
     category: "배관/설비",
     brand: "CK",
@@ -77,6 +80,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
+    slug: "safety-work-gloves",
     name: "안전 작업용 장갑",
     category: "안전용품",
     brand: "CK",
@@ -92,6 +96,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
+    slug: "cutting-disc-4inch",
     name: "절단석 4인치",
     category: "공구/소모품",
     brand: "CK",
@@ -106,6 +111,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
+    slug: "plywood-1220x2440",
     name: "합판 1220x2440",
     category: "목재/합판",
     brand: "CK",
