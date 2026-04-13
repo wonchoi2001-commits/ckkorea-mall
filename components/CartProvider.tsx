@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Product } from "@/lib/types";
 
 type CartItem = Product & {
@@ -8,48 +14,42 @@ type CartItem = Product & {
 };
 
 type CartContextType = {
-  cartItems: CartItem[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (slug: string) => void;
-  increaseQuantity: (slug: string) => void;
-  decreaseQuantity: (slug: string) => void;
-  clearCart: () => void;
+  items: CartItem[];
   totalCount: number;
-  totalPrice: number;
+  addItem: (product: Product) => void;
+  decreaseItem: (slug: string) => void;
+  removeItem: (slug: string) => void;
+  clearCart: () => void;
 };
 
-const CartContext = createContext<CartContextType | null>(null);
+const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const STORAGE_KEY = "ckkorea-cart";
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const [items, setItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        setCartItems(JSON.parse(stored));
-      } catch {
-        setCartItems([]);
-      }
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+      const parsed = JSON.parse(saved) as CartItem[];
+      setItems(parsed);
+    } catch {
+      setItems([]);
     }
-    setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
-  }, [cartItems, mounted]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
 
-  const addToCart = (product: Product) => {
-    if (product.price === null) return;
+  const addItem = (product: Product) => {
+    setItems((prev) => {
+      const found = prev.find((item) => item.slug === product.slug);
 
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.slug === product.slug);
-
-      if (existing) {
+      if (found) {
         return prev.map((item) =>
           item.slug === product.slug
             ? { ...item, quantity: item.quantity + 1 }
@@ -61,55 +61,40 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const removeFromCart = (slug: string) => {
-    setCartItems((prev) => prev.filter((item) => item.slug !== slug));
-  };
-
-  const increaseQuantity = (slug: string) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.slug === slug ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (slug: string) => {
-    setCartItems((prev) =>
+  const decreaseItem = (slug: string) => {
+    setItems((prev) =>
       prev
         .map((item) =>
-          item.slug === slug ? { ...item, quantity: item.quantity - 1 } : item
+          item.slug === slug
+            ? { ...item, quantity: Math.max(0, item.quantity - 1) }
+            : item
         )
         .filter((item) => item.quantity > 0)
     );
   };
 
-  const clearCart = () => setCartItems([]);
+  const removeItem = (slug: string) => {
+    setItems((prev) => prev.filter((item) => item.slug !== slug));
+  };
+
+  const clearCart = () => {
+    setItems([]);
+  };
 
   const totalCount = useMemo(
-    () => cartItems.reduce((sum, item) => sum + item.quantity, 0),
-    [cartItems]
-  );
-
-  const totalPrice = useMemo(
-    () =>
-      cartItems.reduce(
-        (sum, item) => sum + (item.price ?? 0) * item.quantity,
-        0
-      ),
-    [cartItems]
+    () => items.reduce((sum, item) => sum + item.quantity, 0),
+    [items]
   );
 
   return (
     <CartContext.Provider
       value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        increaseQuantity,
-        decreaseQuantity,
-        clearCart,
+        items,
         totalCount,
-        totalPrice,
+        addItem,
+        decreaseItem,
+        removeItem,
+        clearCart,
       }}
     >
       {children}
