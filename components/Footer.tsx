@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-slate-950 text-white">
       <div className="mx-auto max-w-7xl px-6 py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.9fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.8fr_0.8fr_0.95fr]">
           <div>
             <div className="text-2xl font-black tracking-tight">{companyInfo.companyName}</div>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
@@ -67,10 +67,31 @@ export default function Footer() {
                 </Link>
               </div>
               <div>
-                <Link href="/shipping" className="hover:text-white">
-                  배송안내
+                <Link href="/quote" className="hover:text-white">
+                  고객센터
                 </Link>
               </div>
+              <div>
+                <Link href="/business-info" className="hover:text-white">
+                  사업자정보
+                </Link>
+              </div>
+              <div>
+                <Link href="/shipping-policy" className="hover:text-white">
+                  배송정책
+                </Link>
+              </div>
+              <div>
+                <Link href="/refund-policy" className="hover:text-white">
+                  교환/반품/환불
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="text-sm font-bold text-white">정책 / 고지</div>
+            <div className="mt-4 space-y-3 text-sm text-slate-300">
               {legalLinks.map((link) => (
                 <div key={link.href}>
                   <Link href={link.href} className="hover:text-white">
@@ -87,6 +108,8 @@ export default function Footer() {
               <div>대표자: {companyInfo.ceo}</div>
               <div>사업자등록번호: {companyInfo.businessNumber}</div>
               <div>통신판매업 신고번호: {companyInfo.ecommerceNumber}</div>
+              <div>호스팅 제공자: {companyInfo.hostProvider}</div>
+              <div>개인정보 보호책임자: {companyInfo.privacyOfficer}</div>
               <div>전화: {companyInfo.phone}</div>
               <div>이메일: {companyInfo.email}</div>
               <div>주소: {companyInfo.address}</div>

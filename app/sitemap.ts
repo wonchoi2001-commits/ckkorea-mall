@@ -38,13 +38,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${companyInfo.domain}/shipping`,
+      url: `${companyInfo.domain}/shipping-policy`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${companyInfo.domain}/returns`,
+      url: `${companyInfo.domain}/refund-policy`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
@@ -60,6 +60,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
+    },
+    {
+      url: `${companyInfo.domain}/business-info`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${companyInfo.domain}/disclaimer`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${companyInfo.domain}/marketing-consent`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${companyInfo.domain}/youth-protection`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.2,
     },
   ];
 

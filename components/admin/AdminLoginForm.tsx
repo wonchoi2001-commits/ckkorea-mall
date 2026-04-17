@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { getFriendlyAuthErrorMessage } from "@/lib/auth-messages";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export default function AdminLoginForm() {
@@ -24,7 +25,9 @@ export default function AdminLoginForm() {
       });
 
       if (error) {
-        setMessage(error.message);
+        setMessage(
+          getFriendlyAuthErrorMessage(error, "관리자 로그인 중 오류가 발생했습니다.")
+        );
         return;
       }
 
@@ -32,7 +35,9 @@ export default function AdminLoginForm() {
       router.refresh();
     } catch (error) {
       console.error("ADMIN LOGIN ERROR:", error);
-      setMessage("로그인 중 오류가 발생했습니다.");
+      setMessage(
+        getFriendlyAuthErrorMessage(error, "관리자 로그인 중 오류가 발생했습니다.")
+      );
     } finally {
       setLoading(false);
     }

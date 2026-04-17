@@ -291,6 +291,9 @@ export type CompanyInfo = {
   email: string;
   address: string;
   hours: string;
+  hostProvider?: string;
+  privacyOfficer?: string;
+  privacyPolicyEffectiveDate?: string;
   kakaoLabel: string;
   heroTitle: string;
   heroSubtitle: string;

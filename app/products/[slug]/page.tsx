@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import FavoriteButton from "@/components/FavoriteButton";
 import Header from "@/components/Header";
+import LegalNoticePanel from "@/components/legal/LegalNoticePanel";
 import ProductCard from "@/components/ProductCard";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import ProductImage from "@/components/ProductImage";
@@ -18,6 +19,7 @@ import {
   getRelatedProducts,
   normalizeProductSlug,
 } from "@/lib/products";
+import { productLegalNoticeItems } from "@/lib/legal-content";
 import { formatPrice } from "@/lib/utils";
 
 type Props = {
@@ -331,6 +333,19 @@ export default async function ProductDetailPage({ params }: Props) {
               견적문의 바로가기
             </Link>
           </div>
+        </section>
+
+        <section className="mt-10">
+          <LegalNoticePanel
+            title="상품 정보 및 주문 유의사항"
+            description="건축자재, 철물, 공구 상품은 규격·재고·운송 조건과 실제 시공 환경에 따라 적용 결과가 달라질 수 있습니다."
+            items={productLegalNoticeItems}
+            links={[
+              { href: "/disclaimer", label: "상품정보 유의사항" },
+              { href: "/shipping-policy", label: "배송정책" },
+              { href: "/refund-policy", label: "교환/반품/환불 정책" },
+            ]}
+          />
         </section>
 
         <section className="mt-10 rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm">

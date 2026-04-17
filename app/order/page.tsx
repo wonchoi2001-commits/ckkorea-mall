@@ -8,8 +8,11 @@ import { useCart } from "@/components/CartProvider";
 import { useShopper } from "@/components/ShopperProvider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ConsentChecklist from "@/components/legal/ConsentChecklist";
+import LegalNoticePanel from "@/components/legal/LegalNoticePanel";
 import ProductImage from "@/components/ProductImage";
 import { companyInfo, shippingPolicy } from "@/lib/data";
+import { orderLegalNoticeItems } from "@/lib/legal-content";
 import { getRuntimeSiteOrigin } from "@/lib/site";
 import type { Product } from "@/lib/types";
 
@@ -72,11 +75,47 @@ function OrderPageContent() {
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   const [error, setError] = useState("");
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [refundConfirmed, setRefundConfirmed] = useState(false);
+  const [privacyConfirmed, setPrivacyConfirmed] = useState(false);
 
   const requestedSource = searchParams.get("source");
   const preferredSlug = searchParams.get("product");
   const preferredQuantity = Number(searchParams.get("quantity") || "1");
   const isCartMode = requestedSource === "cart";
+  const orderConsentItems = [
+    { id: "order", label: "주문 내용 및 상품 정보를 확인했습니다", href: "/disclaimer", required: true },
+    { id: "refund", label: "교환/반품/환불 정책을 확인했습니다", href: "/refund-policy", required: true },
+    { id: "privacy", label: "개인정보 수집 및 이용에 동의합니다", href: "/privacy", required: true },
+  ] as const;
+  const orderConsentValues = {
+    order: orderConfirmed,
+    refund: refundConfirmed,
+    privacy: privacyConfirmed,
+  };
+  const allOrderConsentsChecked = orderConsentItems.every((item) => orderConsentValues[item.id]);
+
+  const handleOrderConsentToggle = (id: string, checked: boolean) => {
+    if (id === "order") {
+      setOrderConfirmed(checked);
+      return;
+    }
+
+    if (id === "refund") {
+      setRefundConfirmed(checked);
+      return;
+    }
+
+    if (id === "privacy") {
+      setPrivacyConfirmed(checked);
+    }
+  };
+
+  const handleOrderConsentToggleAll = (checked: boolean) => {
+    setOrderConfirmed(checked);
+    setRefundConfirmed(checked);
+    setPrivacyConfirmed(checked);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -293,6 +332,11 @@ function OrderPageContent() {
 
       if (!receiverName || !receiverPhone || !zipCode || !address || !detailAddress) {
         alert("배송 정보를 입력해주세요.");
+        return;
+      }
+
+      if (!orderConfirmed || !refundConfirmed || !privacyConfirmed) {
+        alert("결제 전 필수 약관 및 주문 확인 항목에 동의해주세요.");
         return;
       }
 
@@ -873,6 +917,17 @@ function OrderPageContent() {
                 </p>
               </div>
             </section>
+
+            <LegalNoticePanel
+              title="주문 전 꼭 확인해 주세요"
+              description="건축자재 주문은 일반 소비재보다 운임, 현장 조건, 회수 조건의 영향이 커서 아래 사항을 함께 확인하시는 것이 좋습니다."
+              items={orderLegalNoticeItems}
+              links={[
+                { href: "/refund-policy", label: "교환/반품/환불 정책" },
+                { href: "/shipping-policy", label: "배송정책" },
+                { href: "/disclaimer", label: "상품 유의사항" },
+              ]}
+            />
           </div>
 
           <aside className="h-fit rounded-3xl border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
@@ -926,10 +981,22 @@ function OrderPageContent() {
               <div className="text-3xl font-black text-slate-900">{formatPrice(totalAmount)}</div>
             </div>
 
+            <div className="mt-6">
+              <ConsentChecklist
+                title="결제 전 확인 및 동의"
+                description="주문 내용 확인과 정책 동의가 완료되어야 결제를 진행할 수 있습니다."
+                items={[...orderConsentItems]}
+                values={orderConsentValues}
+                allChecked={allOrderConsentsChecked}
+                onToggle={handleOrderConsentToggle}
+                onToggleAll={handleOrderConsentToggleAll}
+              />
+            </div>
+
             <button
               type="button"
               onClick={handlePayment}
-              disabled={loading}
+              disabled={loading || !allOrderConsentsChecked}
               className="mt-6 w-full rounded-2xl bg-slate-900 px-5 py-4 text-base font-bold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
             >
               {loading ? "결제창 준비 중..." : "토스페이먼츠로 바로 결제하기"}

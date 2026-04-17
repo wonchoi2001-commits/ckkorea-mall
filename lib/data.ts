@@ -10,11 +10,14 @@ export const companyInfo: CompanyInfo = {
   ceo: "김혜영",
   businessNumber: "609-86-14101",
   // Final registration number is not available yet. Keep a clear placeholder only.
-  ecommerceNumber: "통신판매업 신고번호 등록 후 반영 예정",
+  ecommerceNumber: "[통신판매업 신고번호] (등록 후 반영 예정)",
   phone: "055-266-7007",
   email: "khy030900@naver.com",
   address: "경상남도 창원시 성산구 공단로 770(천선동)",
   hours: "평일 09:00 - 18:00",
+  hostProvider: "[호스팅 제공자]",
+  privacyOfficer: "[개인정보 보호책임자명]",
+  privacyPolicyEffectiveDate: "[개인정보 처리방침 시행일]",
   kakaoLabel: "카카오 상담",
   heroTitle:
     "건축자재 · 안전용품 · 철물 · 공구를 온라인으로 빠르게 주문하는 씨케이코리아 자사몰",
@@ -127,10 +130,12 @@ export const shippingPolicy: ShippingPolicy = {
 };
 
 export const legalLinks = [
+  { href: "/business-info", label: "사업자정보" },
+  { href: "/shipping-policy", label: "배송정책" },
+  { href: "/refund-policy", label: "교환/반품/환불" },
   { href: "/privacy", label: "개인정보처리방침" },
   { href: "/terms", label: "이용약관" },
-  { href: "/returns", label: "교환/반품/환불 안내" },
-  { href: "/shipping", label: "배송 안내" },
+  { href: "/disclaimer", label: "상품정보 유의사항" },
 ];
 
 export const homeTrustPoints = [

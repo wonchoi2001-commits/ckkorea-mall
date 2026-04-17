@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PolicyDocumentView from "@/components/legal/PolicyDocumentView";
 import { createPolicyMetadata, getPolicyDocument } from "@/lib/legal-content";
 
-export const metadata: Metadata = createPolicyMetadata("shippingPolicy", "/shipping-policy");
+export const metadata: Metadata = createPolicyMetadata("shippingPolicy");
 
-export default function ShippingPage() {
+export default function ShippingPolicyPage() {
   return <PolicyDocumentView document={getPolicyDocument("shippingPolicy")} />;
 }
