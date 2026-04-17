@@ -10,7 +10,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api", "/mypage", "/login", "/signup", "/forgot-password", "/reset-password"],
+        disallow: [
+          "/admin",
+          "/api",
+          "/mypage",
+          "/login",
+          "/signup",
+          "/forgot-password",
+          "/reset-password",
+          "/payments",
+        ],
       },
     ],
     host: hasPublicSiteUrl ? companyInfo.domain : undefined,

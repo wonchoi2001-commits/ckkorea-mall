@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { forgotPasswordSchema, getValidationMessage } from "@/lib/validation";
 
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
@@ -13,9 +14,17 @@ export default function ForgotPasswordForm() {
     setLoading(true);
     setMessage("");
 
+    const parsed = forgotPasswordSchema.safeParse({ email });
+
+    if (!parsed.success) {
+      setMessage(getValidationMessage(parsed.error, "이메일을 확인해주세요."));
+      setLoading(false);
+      return;
+    }
+
     try {
       const supabase = createBrowserSupabaseClient();
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      const { error } = await supabase.auth.resetPasswordForEmail(parsed.data.email, {
         redirectTo: `${window.location.origin}/reset-password`,
       });
 

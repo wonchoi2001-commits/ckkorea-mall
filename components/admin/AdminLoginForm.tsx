@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getFriendlyAuthErrorMessage } from "@/lib/auth-messages";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { getValidationMessage, loginSchema } from "@/lib/validation";
 
 export default function AdminLoginForm() {
   const router = useRouter();
@@ -17,11 +18,21 @@ export default function AdminLoginForm() {
     setLoading(true);
     setMessage("");
 
+    const parsed = loginSchema.safeParse({ email, password });
+
+    if (!parsed.success) {
+      setMessage(
+        getValidationMessage(parsed.error, "로그인 정보를 다시 확인해주세요.")
+      );
+      setLoading(false);
+      return;
+    }
+
     try {
       const supabase = createBrowserSupabaseClient();
       const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+        email: parsed.data.email,
+        password: parsed.data.password,
       });
 
       if (error) {

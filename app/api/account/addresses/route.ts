@@ -5,8 +5,10 @@ import {
   isMissingMemberTablesError,
   saveAddress,
 } from "@/lib/account";
-import { requireAccountApiUser } from "@/lib/account-api";
+import { enforceAccountMutationSecurity, requireAccountApiUser } from "@/lib/account-api";
+import { logServerError } from "@/lib/security";
 import { normalizePhoneNumber } from "@/lib/utils";
+import { savedAddressSchema } from "@/lib/validation";
 
 export async function GET() {
   const { user, response } = await requireAccountApiUser();
@@ -19,7 +21,7 @@ export async function GET() {
     const addresses = await getSavedAddresses(user.id);
     return NextResponse.json({ addresses });
   } catch (error) {
-    console.error("ACCOUNT ADDRESSES GET ERROR:", error);
+    logServerError("account-addresses-get", error);
 
     return NextResponse.json(
       {
@@ -39,8 +41,23 @@ export async function POST(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "addresses-post");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
+    const parsed = savedAddressSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "배송지 입력값을 다시 확인해주세요." },
+        { status: 400 }
+      );
+    }
+
+    const body = parsed.data;
     const address = await saveAddress(user.id, {
       label: typeof body.label === "string" ? body.label.trim() : undefined,
       recipient_name:
@@ -59,7 +76,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ address }, { status: 201 });
   } catch (error) {
-    console.error("ACCOUNT ADDRESSES POST ERROR:", error);
+    logServerError("account-addresses-post", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)
@@ -78,12 +95,20 @@ export async function PATCH(req: NextRequest) {
     return response;
   }
 
-  try {
-    const body = await req.json();
+  const securityResponse = enforceAccountMutationSecurity(req, "addresses-patch");
 
-    if (!body.id) {
-      return NextResponse.json({ message: "수정할 배송지 ID가 필요합니다." }, { status: 400 });
+  if (securityResponse) {
+    return securityResponse;
+  }
+
+  try {
+    const parsed = savedAddressSchema.safeParse(await req.json());
+
+    if (!parsed.success || !parsed.data.id) {
+      return NextResponse.json({ message: "수정할 배송지 정보를 다시 확인해주세요." }, { status: 400 });
     }
+
+    const body = parsed.data;
 
     const address = await saveAddress(user.id, {
       id: String(body.id),
@@ -104,7 +129,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ address });
   } catch (error) {
-    console.error("ACCOUNT ADDRESSES PATCH ERROR:", error);
+    logServerError("account-addresses-patch", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)
@@ -123,6 +148,12 @@ export async function DELETE(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "addresses-delete");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
@@ -134,7 +165,7 @@ export async function DELETE(req: NextRequest) {
     await deleteSavedAddress(user.id, id);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("ACCOUNT ADDRESSES DELETE ERROR:", error);
+    logServerError("account-addresses-delete", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)

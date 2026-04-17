@@ -5,7 +5,9 @@ import {
   mergeRecentlyViewedProducts,
   recordRecentlyViewedProduct,
 } from "@/lib/account";
-import { requireAccountApiUser } from "@/lib/account-api";
+import { enforceAccountMutationSecurity, requireAccountApiUser } from "@/lib/account-api";
+import { logServerError } from "@/lib/security";
+import { recentViewedMutationSchema } from "@/lib/validation";
 
 export async function GET() {
   const { user, response } = await requireAccountApiUser();
@@ -18,7 +20,7 @@ export async function GET() {
     const products = await getRecentlyViewedProducts(user.id);
     return NextResponse.json({ products });
   } catch (error) {
-    console.error("ACCOUNT RECENT GET ERROR:", error);
+    logServerError("account-recent-get", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)
@@ -37,8 +39,20 @@ export async function POST(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "recently-viewed-post");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
+    const parsed = recentViewedMutationSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json({ message: "최근 본 상품 요청값이 올바르지 않습니다." }, { status: 400 });
+    }
+
+    const body = parsed.data;
 
     if (Array.isArray(body.productIds)) {
       await mergeRecentlyViewedProducts(
@@ -57,15 +71,13 @@ export async function POST(req: NextRequest) {
     await recordRecentlyViewedProduct(user.id, String(body.productId));
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {
-    console.error("ACCOUNT RECENT POST ERROR:", error);
+    logServerError("account-recent-post", error);
     return NextResponse.json(
       {
         message:
-          error instanceof Error
-            ? error.message
-            : isMissingMemberTablesError(error)
-              ? "member_schema.sql 적용이 필요합니다."
-              : "최근 본 상품 저장 중 오류가 발생했습니다.",
+          isMissingMemberTablesError(error)
+            ? "member_schema.sql 적용이 필요합니다."
+            : "최근 본 상품 저장 중 오류가 발생했습니다.",
       },
       { status: 500 }
     );

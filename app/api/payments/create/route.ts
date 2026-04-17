@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isMissingMemberTablesError, saveAddress, updateMemberProfile } from "@/lib/account";
+import { attachCheckoutSessionCookie } from "@/lib/checkout-security";
 import { buildOrderItem, buildOrderRecordInput, isMissingOrdersTableError, makeOrderId } from "@/lib/orders";
 import { getProductRecordById, mapProductRecordToProduct } from "@/lib/products";
+import { applyRateLimit, getRequestIp, isSameOriginRequest, logServerError } from "@/lib/security";
 import { createAdminSupabaseClient, createServerSupabaseClient } from "@/lib/supabase/server";
 import type { BusinessOrderDetails, OrderCustomer, OrderShipping } from "@/lib/types";
+import { orderCreateSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -130,7 +133,36 @@ function normalizeRequestedItems(body: {
 
 export async function POST(req: NextRequest) {
   try {
-    const { productId, quantity, items, customer, shipping, business } = await req.json();
+    if (!isSameOriginRequest(req)) {
+      return NextResponse.json(
+        { message: "허용되지 않은 요청입니다." },
+        { status: 403 }
+      );
+    }
+
+    const rateLimit = applyRateLimit({
+      key: `payments-create:${getRequestIp(req)}`,
+      limit: 10,
+      windowMs: 60_000,
+    });
+
+    if (!rateLimit.ok) {
+      return NextResponse.json(
+        { message: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요." },
+        { status: 429 }
+      );
+    }
+
+    const parsed = orderCreateSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "주문 입력값을 다시 확인해주세요." },
+        { status: 400 }
+      );
+    }
+
+    const { productId, quantity, items, customer, shipping, business } = parsed.data;
     const authSupabase = await createServerSupabaseClient();
     const {
       data: { user },
@@ -218,7 +250,7 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (error) {
-      console.error("ORDER CREATE ERROR:", error);
+      logServerError("payments-create-order", error);
 
       if (isMissingOrdersTableError(error)) {
         return NextResponse.json(
@@ -230,7 +262,10 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      return NextResponse.json({ message: error.message }, { status: 500 });
+      return NextResponse.json(
+        { message: "주문 생성 중 오류가 발생했습니다." },
+        { status: 500 }
+      );
     }
 
     if (data?.id) {
@@ -244,7 +279,9 @@ export async function POST(req: NextRequest) {
       const { error: orderItemsError } = await supabase.from("order_items").insert(orderItemRows);
 
       if (orderItemsError) {
-        console.error("ORDER ITEMS INSERT ERROR:", orderItemsError);
+        logServerError("payments-create-order-items", orderItemsError, {
+          orderId: data.order_id,
+        });
         await supabase.from("orders").delete().eq("id", data.id);
 
         return NextResponse.json(
@@ -303,12 +340,14 @@ export async function POST(req: NextRequest) {
             memberError.code === "42703"
           )
         ) {
-          console.error("ORDER ACCOUNT SAVE ERROR:", memberError);
+          logServerError("payments-create-account-sync", memberError, {
+            orderId: data.order_id,
+          });
         }
       }
     }
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         orderId: data.order_id,
         orderName: data.order_name,
@@ -316,8 +355,13 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 }
     );
+
+    return attachCheckoutSessionCookie(response, {
+      orderId: data.order_id,
+      amount: data.amount,
+    });
   } catch (error) {
-    console.error("PAYMENTS CREATE ERROR:", error);
+    logServerError("payments-create", error);
 
     return NextResponse.json(
       { message: "주문 생성 중 서버 오류가 발생했습니다." },

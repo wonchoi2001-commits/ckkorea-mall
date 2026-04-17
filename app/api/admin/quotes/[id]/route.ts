@@ -1,9 +1,11 @@
-import { jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
+import { enforceAdminMutationSecurity, jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
 import {
   getQuoteRequestRecord,
   isMissingQuoteRequestsTableError,
 } from "@/lib/quotes";
+import { logServerError } from "@/lib/security";
 import { createAdminSupabaseClient } from "@/lib/supabase/server";
+import { adminQuoteUpdateSchema } from "@/lib/validation";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -26,7 +28,7 @@ export async function GET(_: Request, { params }: Props) {
 
     return jsonOk({ quote });
   } catch (error) {
-    console.error("ADMIN QUOTE DETAIL GET ERROR:", error);
+    logServerError("admin-quote-detail-get", error);
 
     if (isMissingQuoteRequestsTableError(error)) {
       return jsonError(
@@ -46,6 +48,12 @@ export async function PATCH(req: Request, { params }: Props) {
     return response;
   }
 
+  const securityResponse = enforceAdminMutationSecurity(req, "quote-detail-patch");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
     const { id } = await params;
     const existingQuote = await getQuoteRequestRecord(id);
@@ -54,10 +62,16 @@ export async function PATCH(req: Request, { params }: Props) {
       return jsonError("견적문의를 찾을 수 없습니다.", 404);
     }
 
-    const body = await req.json();
-    const status = typeof body?.status === "string" ? body.status : "";
-    const adminMemo =
-      typeof body?.admin_memo === "string" ? body.admin_memo.trim() : "";
+    const parsed = adminQuoteUpdateSchema.safeParse({
+      id,
+      ...(await req.json()),
+    });
+
+    if (!parsed.success) {
+      return jsonError("견적문의 상태 입력값을 확인해주세요.", 400);
+    }
+
+    const { status, admin_memo: adminMemo = "" } = parsed.data;
 
     if (!["NEW", "IN_PROGRESS", "COMPLETED"].includes(status)) {
       return jsonError("유효한 처리 상태를 선택해주세요.", 400);
@@ -75,13 +89,13 @@ export async function PATCH(req: Request, { params }: Props) {
       .single();
 
     if (error) {
-      console.error("ADMIN QUOTE DETAIL PATCH ERROR:", error);
-      return jsonError(error.message, 500);
+      logServerError("admin-quote-detail-patch", error, { id });
+      return jsonError("견적문의 저장 중 오류가 발생했습니다.", 500);
     }
 
     return jsonOk({ quote: data });
   } catch (error) {
-    console.error("ADMIN QUOTE DETAIL PATCH ERROR:", error);
+    logServerError("admin-quote-detail-patch", error);
     return jsonError("견적문의 저장 중 오류가 발생했습니다.", 500);
   }
 }

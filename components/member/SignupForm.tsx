@@ -4,15 +4,17 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import ConsentChecklist from "@/components/legal/ConsentChecklist";
+import { getSafeRedirectPath } from "@/lib/redirects";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { normalizeBusinessNumber, normalizePhoneNumber } from "@/lib/utils";
+import { getValidationMessage, signupSchema } from "@/lib/validation";
 
 type MemberType = "personal" | "business";
 
 export default function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect") || "/mypage";
+  const redirectTo = getSafeRedirectPath(searchParams.get("redirect"), "/mypage");
   const [memberType, setMemberType] = useState<MemberType>("personal");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -75,20 +77,29 @@ export default function SignupForm() {
     setLoading(true);
     setMessage("");
 
-    if (!name || !email || !password || !phone) {
-      setMessage("이름, 이메일, 비밀번호, 휴대폰번호는 필수 입력입니다.");
-      setLoading(false);
-      return;
-    }
+    const parsed = signupSchema.safeParse({
+      name,
+      email,
+      password,
+      phone,
+      memberType,
+      termsConsent,
+      privacyConsent,
+      receiveMarketing,
+      companyName,
+      businessNumber,
+      managerName,
+      managerPhone,
+      taxEmail,
+    });
 
-    if (memberType === "business" && (!companyName || !businessNumber || !managerName)) {
-      setMessage("사업자회원은 회사명, 사업자등록번호, 담당자명을 입력해주세요.");
-      setLoading(false);
-      return;
-    }
-
-    if (!termsConsent || !privacyConsent) {
-      setMessage("회원가입을 위해 이용약관과 개인정보처리방침 동의가 필요합니다.");
+    if (!parsed.success) {
+      setMessage(
+        getValidationMessage(
+          parsed.error,
+          "회원가입 정보를 다시 확인해주세요."
+        )
+      );
       setLoading(false);
       return;
     }

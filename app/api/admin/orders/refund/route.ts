@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminUser } from "@/lib/auth";
+import { enforceAdminMutationSecurity, requireAdminApiUser } from "@/lib/admin-api";
 import {
   getRefundableItems,
   getRemainingRefundableAmount,
@@ -7,106 +7,39 @@ import {
 import { getOrderRecord, isMissingOrdersTableError } from "@/lib/orders";
 import {
   createAdminSupabaseClient,
-  createServerSupabaseClient,
 } from "@/lib/supabase/server";
+import { logServerError } from "@/lib/security";
 import { cancelTossPayment } from "@/lib/toss-payments";
-
-type RequestedRefundItem = {
-  productId: string;
-  quantity: number;
-};
-
-async function requireAdmin() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return {
-      user: null,
-      response: NextResponse.json(
-        { message: "관리자 로그인이 필요합니다." },
-        { status: 401 }
-      ),
-    };
-  }
-
-  if (!isAdminUser(user)) {
-    return {
-      user: null,
-      response: NextResponse.json(
-        { message: "관리자 권한이 없습니다." },
-        { status: 403 }
-      ),
-    };
-  }
-
-  return { user, response: null };
-}
-
-function parseRequestedRefundItems(value: unknown) {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value
-    .map((item) => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
-
-      const candidate = item as Record<string, unknown>;
-      const productId =
-        typeof candidate.productId === "string" ? candidate.productId.trim() : "";
-      const quantity =
-        typeof candidate.quantity === "number"
-          ? candidate.quantity
-          : typeof candidate.quantity === "string"
-            ? Number(candidate.quantity)
-            : NaN;
-
-      if (!productId || !Number.isInteger(quantity) || quantity <= 0) {
-        return null;
-      }
-
-      return {
-        productId,
-        quantity,
-      } satisfies RequestedRefundItem;
-    })
-    .filter((item): item is RequestedRefundItem => item !== null);
-}
+import { adminOrderPartialRefundSchema } from "@/lib/validation";
 
 export async function POST(req: Request) {
-  const { user, response: authResponse } = await requireAdmin();
+  const { user, response: authResponse } = await requireAdminApiUser();
 
   if (authResponse || !user) {
     return authResponse;
   }
 
+  const securityResponse = enforceAdminMutationSecurity(req, "orders-partial-refund");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
-    const orderId = body?.orderId;
-    const requestedItems = parseRequestedRefundItems(body?.refundItems);
-    const cancelReason =
-      typeof body?.cancelReason === "string" && body.cancelReason.trim()
-        ? body.cancelReason.trim()
-        : "관리자 요청으로 부분 환불했습니다.";
+    const parsed = adminOrderPartialRefundSchema.safeParse(await req.json());
 
-    if (!orderId || typeof orderId !== "string") {
+    if (!parsed.success) {
       return NextResponse.json(
-        { message: "주문번호가 필요합니다." },
+        { message: "부분 환불 입력값을 확인해주세요." },
         { status: 400 }
       );
     }
 
-    if (requestedItems.length === 0) {
-      return NextResponse.json(
-        { message: "부분 환불할 상품 수량을 선택해주세요." },
-        { status: 400 }
-      );
-    }
+    const {
+      orderId,
+      refundItems: requestedItems,
+      cancelReason = "관리자 요청으로 부분 환불했습니다.",
+    } = parsed.data;
 
     const order = await getOrderRecord(orderId);
 
@@ -237,7 +170,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ order: updatedOrder }, { status: 200 });
   } catch (error) {
-    console.error("ADMIN ORDER PARTIAL REFUND ERROR:", error);
+    logServerError("admin-order-partial-refund", error);
 
     if (error instanceof Error) {
       if (error.message === "ORDER_ITEM_NOT_FOUND") {

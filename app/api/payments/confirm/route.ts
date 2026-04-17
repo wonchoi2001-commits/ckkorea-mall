@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  clearCheckoutSessionCookie,
+  getCheckoutSessionTokenFromCookies,
+  verifyCheckoutSessionToken,
+} from "@/lib/checkout-security";
 import { notifyOrderPaid } from "@/lib/notifications";
 import { getRemainingRefundableAmount } from "@/lib/order-refunds";
 import {
@@ -7,20 +12,56 @@ import {
   isMissingOrdersTableError,
   mapOrderRecordToSummary,
 } from "@/lib/orders";
+import { applyRateLimit, getRequestIp, isSameOriginRequest, logServerError } from "@/lib/security";
 import { createAdminSupabaseClient } from "@/lib/supabase/server";
 import type { OrderRecord } from "@/lib/types";
+import { paymentConfirmSchema } from "@/lib/validation";
 import { cancelTossPayment, getTossAuthHeader } from "@/lib/toss-payments";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    const { paymentKey, orderId, amount } = await req.json();
-
-    if (!paymentKey || !orderId || !amount) {
+    if (!isSameOriginRequest(req)) {
       return NextResponse.json(
-        { message: "paymentKey, orderId, amount는 필수입니다." },
+        { message: "허용되지 않은 요청입니다." },
+        { status: 403 }
+      );
+    }
+
+    const rateLimit = applyRateLimit({
+      key: `payments-confirm:${getRequestIp(req)}`,
+      limit: 12,
+      windowMs: 60_000,
+    });
+
+    if (!rateLimit.ok) {
+      return NextResponse.json(
+        { message: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요." },
+        { status: 429 }
+      );
+    }
+
+    const parsed = paymentConfirmSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "결제 승인 요청값이 올바르지 않습니다." },
         { status: 400 }
+      );
+    }
+
+    const { paymentKey, orderId, amount } = parsed.data;
+    const checkoutSessionToken = await getCheckoutSessionTokenFromCookies();
+    const verifiedCheckoutSession = verifyCheckoutSessionToken(checkoutSessionToken, {
+      orderId,
+      amount,
+    });
+
+    if (!verifiedCheckoutSession) {
+      return NextResponse.json(
+        { message: "주문 세션을 확인할 수 없습니다. 다시 주문을 진행해주세요." },
+        { status: 403 }
       );
     }
 
@@ -29,7 +70,7 @@ export async function POST(req: NextRequest) {
     try {
       existingOrder = await getOrderRecord(orderId);
     } catch (error) {
-      console.error("ORDER LOOKUP ERROR:", error);
+      logServerError("payments-confirm-order-lookup", error, { orderId });
 
       if (isMissingOrdersTableError(error)) {
         return NextResponse.json(
@@ -52,7 +93,9 @@ export async function POST(req: NextRequest) {
     }
 
     if (existingOrder.status === "DONE") {
-      return NextResponse.json(mapOrderRecordToSummary(existingOrder), { status: 200 });
+      return clearCheckoutSessionCookie(
+        NextResponse.json(mapOrderRecordToSummary(existingOrder), { status: 200 })
+      );
     }
 
     if (existingOrder.status === "CANCELED") {
@@ -90,13 +133,13 @@ export async function POST(req: NextRequest) {
         })
         .eq("order_id", orderId);
 
-      return NextResponse.json(
+      return clearCheckoutSessionCookie(NextResponse.json(
         {
           message: data?.message || "결제 승인 실패",
           code: data?.code || null,
         },
         { status: tossResponse.status }
-      );
+      ));
     }
 
     try {
@@ -118,15 +161,17 @@ export async function POST(req: NextRequest) {
       try {
         await notifyOrderPaid(updatedOrder as OrderRecord);
       } catch (notificationError) {
-        console.error("ORDER PAID NOTIFICATION ERROR:", notificationError);
+        logServerError("payments-confirm-notification", notificationError, { orderId });
       }
 
-      return NextResponse.json(
-        mapOrderRecordToSummary(updatedOrder as OrderRecord),
-        { status: 200 }
+      return clearCheckoutSessionCookie(
+        NextResponse.json(
+          mapOrderRecordToSummary(updatedOrder as OrderRecord),
+          { status: 200 }
+        )
       );
     } catch (error) {
-      console.error("ORDER PROCESS AFTER CONFIRM ERROR:", error);
+      logServerError("payments-confirm-process", error, { orderId });
 
       if (isInventoryProcessingError(error)) {
         const cancelReason =
@@ -140,7 +185,7 @@ export async function POST(req: NextRequest) {
         });
 
         if (!cancelResponse.ok) {
-          console.error("AUTO CANCEL AFTER INVENTORY ERROR FAILED:", cancelData);
+          logServerError("payments-confirm-auto-cancel", cancelData, { orderId });
           return NextResponse.json(
             {
               message:
@@ -180,12 +225,16 @@ export async function POST(req: NextRequest) {
         });
 
         if (cancelOrderError) {
-          console.error("ORDER AUTO CANCEL UPDATE ERROR:", cancelOrderError);
+          logServerError("payments-confirm-auto-cancel-update", cancelOrderError, {
+            orderId,
+          });
         }
 
-        return NextResponse.json(
-          { message: cancelReason },
-          { status: 409 }
+        return clearCheckoutSessionCookie(
+          NextResponse.json(
+            { message: cancelReason },
+            { status: 409 }
+          )
         );
       }
 
@@ -195,7 +244,7 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (error) {
-    console.error("PAYMENTS CONFIRM ERROR:", error);
+    logServerError("payments-confirm", error);
 
     return NextResponse.json(
       { message: "결제 승인 중 서버 오류가 발생했습니다." },

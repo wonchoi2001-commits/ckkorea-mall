@@ -1,52 +1,58 @@
 import { NextResponse } from "next/server";
 import { notifyQuoteRequestReceived } from "@/lib/notifications";
+import { applyRateLimit, getRequestIp, isSameOriginRequest, logServerError } from "@/lib/security";
 import {
   createAdminSupabaseClient,
   createServerSupabaseClient,
 } from "@/lib/supabase/server";
 import { isMissingQuoteRequestsTableError } from "@/lib/quotes";
+import { quoteRequestSchema } from "@/lib/validation";
 
 export async function handleQuoteRequestPost(req: Request) {
   try {
+    if (!isSameOriginRequest(req)) {
+      return NextResponse.json(
+        { message: "허용되지 않은 요청입니다." },
+        { status: 403 }
+      );
+    }
+
+    const rateLimit = applyRateLimit({
+      key: `quotes:${getRequestIp(req)}`,
+      limit: 8,
+      windowMs: 60_000,
+    });
+
+    if (!rateLimit.ok) {
+      return NextResponse.json(
+        { message: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요." },
+        { status: 429 }
+      );
+    }
+
     const authSupabase = await createServerSupabaseClient();
     const {
       data: { user },
     } = await authSupabase.auth.getUser();
-    const body = await req.json();
-    const customerName =
-      typeof body?.customer_name === "string" ? body.customer_name.trim() : "";
-    const phone = typeof body?.phone === "string" ? body.phone.trim() : "";
-    const email = typeof body?.email === "string" ? body.email.trim() : "";
-    const message = typeof body?.message === "string" ? body.message.trim() : "";
-    const isBusinessOrder = body?.is_business_order === true;
-    const companyName =
-      typeof body?.company_name === "string" ? body.company_name.trim() : "";
-    const businessNumber =
-      typeof body?.business_number === "string" ? body.business_number.trim() : "";
-    const taxInvoiceNeeded = body?.tax_invoice_needed === true;
-    const taxInvoiceEmail =
-      typeof body?.tax_invoice_email === "string" ? body.tax_invoice_email.trim() : "";
+    const parsed = quoteRequestSchema.safeParse(await req.json());
 
-    if (!customerName || !phone || !email || !message) {
+    if (!parsed.success) {
       return NextResponse.json(
-        { message: "이름, 연락처, 이메일, 문의내용은 필수 입력입니다." },
+        { message: "견적문의 입력값을 다시 확인해주세요." },
         { status: 400 }
       );
     }
 
-    if ((isBusinessOrder || taxInvoiceNeeded) && (!companyName || !businessNumber)) {
-      return NextResponse.json(
-        { message: "사업자 문의는 회사명과 사업자등록번호를 입력해주세요." },
-        { status: 400 }
-      );
-    }
-
-    if (taxInvoiceNeeded && !(taxInvoiceEmail || email)) {
-      return NextResponse.json(
-        { message: "세금계산서 수신 이메일을 입력해주세요." },
-        { status: 400 }
-      );
-    }
+    const body = parsed.data;
+    const customerName = body.customer_name.trim();
+    const phone = body.phone.trim();
+    const email = body.email.trim();
+    const message = body.message.trim();
+    const isBusinessOrder = body.is_business_order === true;
+    const companyName = body.company_name?.trim() || "";
+    const businessNumber = body.business_number?.trim() || "";
+    const taxInvoiceNeeded = body.tax_invoice_needed === true;
+    const taxInvoiceEmail = body.tax_invoice_email?.trim() || "";
 
     const supabase = createAdminSupabaseClient();
     const { data, error } = await supabase
@@ -88,7 +94,7 @@ export async function handleQuoteRequestPost(req: Request) {
       .single();
 
     if (error) {
-      console.error("QUOTE REQUEST INSERT ERROR:", error);
+      logServerError("quote-request-insert", error);
 
       if (isMissingQuoteRequestsTableError(error)) {
         return NextResponse.json(
@@ -100,7 +106,10 @@ export async function handleQuoteRequestPost(req: Request) {
         );
       }
 
-      return NextResponse.json({ message: error.message }, { status: 500 });
+      return NextResponse.json(
+        { message: "견적문의 접수 중 오류가 발생했습니다." },
+        { status: 500 }
+      );
     }
 
     try {
@@ -117,7 +126,7 @@ export async function handleQuoteRequestPost(req: Request) {
 
       await notifyQuoteRequestReceived(data);
     } catch (notificationError) {
-      console.error("QUOTE REQUEST NOTIFICATION ERROR:", notificationError);
+      logServerError("quote-request-notification", notificationError);
     }
 
     return NextResponse.json(
@@ -125,7 +134,7 @@ export async function handleQuoteRequestPost(req: Request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("QUOTE REQUEST ERROR:", error);
+    logServerError("quote-request", error);
 
     return NextResponse.json(
       { message: "견적문의 접수 중 오류가 발생했습니다." },

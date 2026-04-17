@@ -1,17 +1,57 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  clearCheckoutSessionCookie,
+  getCheckoutSessionTokenFromCookies,
+  verifyCheckoutSessionToken,
+} from "@/lib/checkout-security";
 import { getOrderRecord, isMissingOrdersTableError } from "@/lib/orders";
+import { applyRateLimit, getRequestIp, isSameOriginRequest, logServerError } from "@/lib/security";
 import { createAdminSupabaseClient } from "@/lib/supabase/server";
+import { paymentFailSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    const { orderId, code, message } = await req.json();
-
-    if (!orderId) {
+    if (!isSameOriginRequest(req)) {
       return NextResponse.json(
-        { message: "orderId는 필수입니다." },
+        { message: "허용되지 않은 요청입니다." },
+        { status: 403 }
+      );
+    }
+
+    const rateLimit = applyRateLimit({
+      key: `payments-fail:${getRequestIp(req)}`,
+      limit: 20,
+      windowMs: 60_000,
+    });
+
+    if (!rateLimit.ok) {
+      return NextResponse.json(
+        { message: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요." },
+        { status: 429 }
+      );
+    }
+
+    const parsed = paymentFailSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "결제 실패 요청값이 올바르지 않습니다." },
         { status: 400 }
+      );
+    }
+
+    const { orderId, code, message } = parsed.data;
+    const checkoutSessionToken = await getCheckoutSessionTokenFromCookies();
+    const verifiedCheckoutSession = verifyCheckoutSessionToken(checkoutSessionToken, {
+      orderId,
+    });
+
+    if (!verifiedCheckoutSession) {
+      return NextResponse.json(
+        { message: "주문 세션을 확인할 수 없습니다." },
+        { status: 403 }
       );
     }
 
@@ -26,10 +66,10 @@ export async function POST(req: NextRequest) {
       }
 
       if (order.status === "DONE") {
-        return NextResponse.json({ ok: true }, { status: 200 });
+        return clearCheckoutSessionCookie(NextResponse.json({ ok: true }, { status: 200 }));
       }
     } catch (error) {
-      console.error("ORDER LOOKUP ERROR:", error);
+      logServerError("payments-fail-order-lookup", error, { orderId });
 
       if (isMissingOrdersTableError(error)) {
         return NextResponse.json(
@@ -56,13 +96,16 @@ export async function POST(req: NextRequest) {
       .eq("order_id", orderId);
 
     if (error) {
-      console.error("ORDER FAIL UPDATE ERROR:", error);
-      return NextResponse.json({ message: error.message }, { status: 500 });
+      logServerError("payments-fail-update", error, { orderId });
+      return NextResponse.json(
+        { message: "결제 실패 상태 저장 중 오류가 발생했습니다." },
+        { status: 500 }
+      );
     }
 
-    return NextResponse.json({ ok: true }, { status: 200 });
+    return clearCheckoutSessionCookie(NextResponse.json({ ok: true }, { status: 200 }));
   } catch (error) {
-    console.error("PAYMENTS FAIL ERROR:", error);
+    logServerError("payments-fail", error);
 
     return NextResponse.json(
       { message: "결제 실패 상태 저장 중 서버 오류가 발생했습니다." },

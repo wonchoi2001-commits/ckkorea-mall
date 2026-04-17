@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { getValidationMessage, resetPasswordSchema } from "@/lib/validation";
 
 export default function ResetPasswordForm() {
   const router = useRouter();
@@ -16,21 +17,19 @@ export default function ResetPasswordForm() {
     setLoading(true);
     setMessage("");
 
-    if (!password || password.length < 8) {
-      setMessage("비밀번호는 8자 이상으로 입력해주세요.");
-      setLoading(false);
-      return;
-    }
+    const parsed = resetPasswordSchema.safeParse({ password, confirmPassword });
 
-    if (password !== confirmPassword) {
-      setMessage("비밀번호 확인이 일치하지 않습니다.");
+    if (!parsed.success) {
+      setMessage(
+        getValidationMessage(parsed.error, "비밀번호 정보를 다시 확인해주세요.")
+      );
       setLoading(false);
       return;
     }
 
     try {
       const supabase = createBrowserSupabaseClient();
-      const { error } = await supabase.auth.updateUser({ password });
+      const { error } = await supabase.auth.updateUser({ password: parsed.data.password });
 
       if (error) {
         setMessage(error.message);

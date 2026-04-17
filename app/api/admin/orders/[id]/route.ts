@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
-import { jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
+import { enforceAdminMutationSecurity, jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
 import { FULFILLMENT_STATUS_OPTIONS, TAX_INVOICE_STATUS_OPTIONS } from "@/lib/order-status";
 import {
   getOrderItemRecords,
   getOrderRecord,
   isMissingOrdersTableError,
 } from "@/lib/orders";
+import { logServerError } from "@/lib/security";
 import { createAdminSupabaseClient } from "@/lib/supabase/server";
+import { adminOrderUpdateSchema } from "@/lib/validation";
 
 const allowedFulfillmentStatuses = new Set<string>(
   FULFILLMENT_STATUS_OPTIONS.map((option) => option.value)
@@ -51,7 +53,7 @@ export async function GET(_: Request, { params }: Props) {
 
     return jsonOk({ order, orderItems });
   } catch (error) {
-    console.error("ADMIN ORDER DETAIL GET ERROR:", error);
+    logServerError("admin-order-detail-get", error);
 
     if (isMissingOrdersTableError(error)) {
       return jsonError(
@@ -71,6 +73,12 @@ export async function PATCH(req: Request, { params }: Props) {
     return response;
   }
 
+  const securityResponse = enforceAdminMutationSecurity(req, "order-detail-patch");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
     const { id } = await params;
     const existingOrder = await getOrderRecord(id);
@@ -79,18 +87,23 @@ export async function PATCH(req: Request, { params }: Props) {
       return jsonError("주문을 찾을 수 없습니다.", 404);
     }
 
-    const body = await req.json();
-    const fulfillmentStatus = body?.fulfillment_status;
-    const shippingCarrier =
-      typeof body?.shipping_carrier === "string" ? body.shipping_carrier.trim() : "";
-    const trackingNumber =
-      typeof body?.tracking_number === "string" ? body.tracking_number.trim() : "";
-    const adminMemo =
-      typeof body?.admin_memo === "string" ? body.admin_memo.trim() : "";
-    const taxInvoiceStatus =
-      typeof body?.tax_invoice_status === "string" ? body.tax_invoice_status.trim() : "";
-    const taxInvoiceNote =
-      typeof body?.tax_invoice_note === "string" ? body.tax_invoice_note.trim() : "";
+    const parsed = adminOrderUpdateSchema.safeParse({
+      orderId: id,
+      ...(await req.json()),
+    });
+
+    if (!parsed.success) {
+      return jsonError("주문 상태 입력값을 확인해주세요.", 400);
+    }
+
+    const {
+      fulfillment_status: fulfillmentStatus,
+      shipping_carrier: shippingCarrier = "",
+      tracking_number: trackingNumber = "",
+      admin_memo: adminMemo = "",
+      tax_invoice_status: taxInvoiceStatus = "",
+      tax_invoice_note: taxInvoiceNote = "",
+    } = parsed.data;
 
     if (
       !fulfillmentStatus ||
@@ -136,13 +149,13 @@ export async function PATCH(req: Request, { params }: Props) {
       .single();
 
     if (error) {
-      console.error("ADMIN ORDER DETAIL PATCH ERROR:", error);
-      return jsonError(error.message, 500);
+      logServerError("admin-order-detail-patch", error, { id });
+      return jsonError("주문 상태 변경 중 오류가 발생했습니다.", 500);
     }
 
     return jsonOk({ order: data });
   } catch (error) {
-    console.error("ADMIN ORDER DETAIL PATCH ERROR:", error);
+    logServerError("admin-order-detail-patch", error);
     return jsonError("주문 상태 변경 중 오류가 발생했습니다.", 500);
   }
 }

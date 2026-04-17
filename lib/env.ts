@@ -1,24 +1,34 @@
+import { z } from "zod";
+
 type PublicSupabaseEnv = {
   url: string;
   anonKey: string;
 };
 
-function readTrimmedEnv(name: string) {
-  const value = process.env[name];
-  const trimmed = value?.trim();
-
-  return trimmed ? trimmed : null;
-}
+const nonEmptyString = z.string().trim().min(1);
+const publicSupabaseEnvSchema = z.object({
+  NEXT_PUBLIC_SUPABASE_URL: nonEmptyString.url(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: nonEmptyString,
+});
+const serverSecretSchema = z.object({
+  SUPABASE_SERVICE_ROLE_KEY: nonEmptyString,
+});
+const signingSecretSchema = z.object({
+  APP_SIGNING_SECRET: nonEmptyString.optional(),
+  SUPABASE_SERVICE_ROLE_KEY: nonEmptyString.optional(),
+});
 
 export function getPublicSupabaseEnv(): PublicSupabaseEnv | null {
-  const url = readTrimmedEnv("NEXT_PUBLIC_SUPABASE_URL");
-  const anonKey = readTrimmedEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  const parsed = publicSupabaseEnvSchema.safeParse(process.env);
 
-  if (!url || !anonKey) {
+  if (!parsed.success) {
     return null;
   }
 
-  return { url, anonKey };
+  return {
+    url: parsed.data.NEXT_PUBLIC_SUPABASE_URL,
+    anonKey: parsed.data.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  };
 }
 
 export function requirePublicSupabaseEnv(): PublicSupabaseEnv {
@@ -34,7 +44,13 @@ export function requirePublicSupabaseEnv(): PublicSupabaseEnv {
 }
 
 export function getSupabaseServiceRoleKey() {
-  return readTrimmedEnv("SUPABASE_SERVICE_ROLE_KEY");
+  const parsed = serverSecretSchema.safeParse(process.env);
+
+  if (!parsed.success) {
+    return null;
+  }
+
+  return parsed.data.SUPABASE_SERVICE_ROLE_KEY;
 }
 
 export function requireSupabaseServiceRoleKey() {
@@ -47,4 +63,26 @@ export function requireSupabaseServiceRoleKey() {
   }
 
   return key;
+}
+
+export function getAppSigningSecret() {
+  const parsed = signingSecretSchema.safeParse(process.env);
+
+  if (!parsed.success) {
+    return null;
+  }
+
+  return parsed.data.APP_SIGNING_SECRET?.trim() || parsed.data.SUPABASE_SERVICE_ROLE_KEY?.trim() || null;
+}
+
+export function requireAppSigningSecret() {
+  const secret = getAppSigningSecret();
+
+  if (!secret) {
+    throw new Error(
+      "Signing secret env is missing. Set APP_SIGNING_SECRET (recommended) or SUPABASE_SERVICE_ROLE_KEY before using signed checkout session protection."
+    );
+  }
+
+  return secret;
 }

@@ -6,7 +6,6 @@ const ALLOWED_IMAGE_TYPES = new Set([
   "image/png",
   "image/webp",
   "image/gif",
-  "image/svg+xml",
 ]);
 const MAX_IMAGE_SIZE = 8 * 1024 * 1024;
 
@@ -20,7 +19,7 @@ export function getProductImageBucketName() {
 
 export function validateProductImageFile(file: File) {
   if (!ALLOWED_IMAGE_TYPES.has(file.type)) {
-    return "JPG, PNG, WEBP, GIF, SVG 형식의 이미지만 업로드할 수 있습니다.";
+    return "JPG, PNG, WEBP, GIF 형식의 이미지만 업로드할 수 있습니다.";
   }
 
   if (file.size > MAX_IMAGE_SIZE) {

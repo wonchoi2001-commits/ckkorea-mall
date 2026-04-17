@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAccountApiUser } from "@/lib/account-api";
+import { enforceAccountMutationSecurity, requireAccountApiUser } from "@/lib/account-api";
 import { getMemberProfile, isMissingMemberTablesError, updateMemberProfile } from "@/lib/account";
+import { logServerError } from "@/lib/security";
 import { normalizeBusinessNumber, normalizePhoneNumber } from "@/lib/utils";
+import { accountProfilePatchSchema } from "@/lib/validation";
 
 export async function GET() {
   const { user, response } = await requireAccountApiUser();
@@ -14,7 +16,7 @@ export async function GET() {
     const profile = await getMemberProfile(user);
     return NextResponse.json({ profile });
   } catch (error) {
-    console.error("ACCOUNT PROFILE GET ERROR:", error);
+    logServerError("account-profile-get", error);
 
     return NextResponse.json(
       {
@@ -34,8 +36,23 @@ export async function PATCH(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "profile-patch");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
+    const parsed = accountProfilePatchSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "회원 정보 입력값을 다시 확인해주세요." },
+        { status: 400 }
+      );
+    }
+
+    const body = parsed.data;
     const profile = await updateMemberProfile(user, {
       name: typeof body.name === "string" ? body.name.trim() : undefined,
       phone:
@@ -93,7 +110,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ profile });
   } catch (error) {
-    console.error("ACCOUNT PROFILE PATCH ERROR:", error);
+    logServerError("account-profile-patch", error);
 
     return NextResponse.json(
       {

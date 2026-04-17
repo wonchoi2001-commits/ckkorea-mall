@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminUser } from "@/lib/auth";
+import { enforceAdminMutationSecurity, requireAdminApiUser } from "@/lib/admin-api";
 import {
   getRefundableItems,
   getRemainingRefundableAmount,
@@ -7,60 +7,38 @@ import {
 import { getOrderRecord, isMissingOrdersTableError } from "@/lib/orders";
 import {
   createAdminSupabaseClient,
-  createServerSupabaseClient,
 } from "@/lib/supabase/server";
+import { logServerError } from "@/lib/security";
 import { cancelTossPayment } from "@/lib/toss-payments";
-
-async function requireAdmin() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return {
-      user: null,
-      response: NextResponse.json(
-        { message: "관리자 로그인이 필요합니다." },
-        { status: 401 }
-      ),
-    };
-  }
-
-  if (!isAdminUser(user)) {
-    return {
-      user: null,
-      response: NextResponse.json(
-        { message: "관리자 권한이 없습니다." },
-        { status: 403 }
-      ),
-    };
-  }
-
-  return { user, response: null };
-}
+import { adminOrderRefundSchema } from "@/lib/validation";
 
 export async function POST(req: Request) {
-  const { user, response: authResponse } = await requireAdmin();
+  const { user, response: authResponse } = await requireAdminApiUser();
 
   if (authResponse || !user) {
     return authResponse;
   }
 
-  try {
-    const body = await req.json();
-    const orderId = body?.orderId;
-    const cancelReason =
-      typeof body?.cancelReason === "string" && body.cancelReason.trim()
-        ? body.cancelReason.trim()
-        : "관리자 요청으로 남은 결제금액을 전체 환불했습니다.";
+  const securityResponse = enforceAdminMutationSecurity(req, "orders-full-refund");
 
-    if (!orderId || typeof orderId !== "string") {
+  if (securityResponse) {
+    return securityResponse;
+  }
+
+  try {
+    const parsed = adminOrderRefundSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
       return NextResponse.json(
-        { message: "주문번호가 필요합니다." },
+        { message: "환불 입력값을 확인해주세요." },
         { status: 400 }
       );
     }
+
+    const {
+      orderId,
+      cancelReason = "관리자 요청으로 남은 결제금액을 전체 환불했습니다.",
+    } = parsed.data;
 
     const order = await getOrderRecord(orderId);
 
@@ -161,7 +139,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ order: updatedOrder }, { status: 200 });
   } catch (error) {
-    console.error("ADMIN ORDER CANCEL ERROR:", error);
+    logServerError("admin-order-cancel", error);
 
     if (isMissingOrdersTableError(error)) {
       return NextResponse.json(

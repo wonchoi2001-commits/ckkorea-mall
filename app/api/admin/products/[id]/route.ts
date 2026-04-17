@@ -1,6 +1,7 @@
 import { buildAdminProductPayload, softDeleteProduct } from "@/lib/admin-products";
-import { jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
+import { enforceAdminMutationSecurity, jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
 import { getProductRecordById } from "@/lib/products";
+import { logServerError } from "@/lib/security";
 import { createAdminSupabaseClient } from "@/lib/supabase/server";
 
 type Props = {
@@ -27,7 +28,7 @@ export async function GET(_: Request, { params }: Props) {
 
     return jsonOk({ product });
   } catch (error) {
-    console.error("ADMIN PRODUCT GET ERROR:", error);
+    logServerError("admin-product-get", error);
     return jsonError("상품 조회 중 오류가 발생했습니다.", 500);
   }
 }
@@ -37,6 +38,12 @@ export async function PATCH(req: Request, { params }: Props) {
 
   if (response) {
     return response;
+  }
+
+  const securityResponse = enforceAdminMutationSecurity(req, "products-patch");
+
+  if (securityResponse) {
+    return securityResponse;
   }
 
   try {
@@ -68,22 +75,28 @@ export async function PATCH(req: Request, { params }: Props) {
       .single();
 
     if (updateError) {
-      console.error("ADMIN PRODUCT PATCH ERROR:", updateError);
-      return jsonError(updateError.message, 500);
+      logServerError("admin-product-patch", updateError, { id });
+      return jsonError("상품 수정 중 오류가 발생했습니다.", 500);
     }
 
     return jsonOk({ product: data });
   } catch (error) {
-    console.error("ADMIN PRODUCT PATCH ERROR:", error);
+    logServerError("admin-product-patch", error);
     return jsonError("상품 수정 중 오류가 발생했습니다.", 500);
   }
 }
 
-export async function DELETE(_: Request, { params }: Props) {
+export async function DELETE(req: Request, { params }: Props) {
   const { user, response } = await requireAdminApiUser();
 
   if (response) {
     return response;
+  }
+
+  const securityResponse = enforceAdminMutationSecurity(req, "products-delete");
+
+  if (securityResponse) {
+    return securityResponse;
   }
 
   try {
@@ -101,7 +114,7 @@ export async function DELETE(_: Request, { params }: Props) {
 
     return jsonOk({ product: archivedProduct });
   } catch (error) {
-    console.error("ADMIN PRODUCT DELETE ERROR:", error);
+    logServerError("admin-product-delete", error);
     return jsonError("상품 삭제 중 오류가 발생했습니다.", 500);
   }
 }

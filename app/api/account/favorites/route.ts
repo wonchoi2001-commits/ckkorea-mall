@@ -6,7 +6,9 @@ import {
   mergeFavoriteProducts,
   removeFavoriteProduct,
 } from "@/lib/account";
-import { requireAccountApiUser } from "@/lib/account-api";
+import { enforceAccountMutationSecurity, requireAccountApiUser } from "@/lib/account-api";
+import { logServerError } from "@/lib/security";
+import { favoriteMutationSchema } from "@/lib/validation";
 
 export async function GET() {
   const { user, response } = await requireAccountApiUser();
@@ -19,7 +21,7 @@ export async function GET() {
     const products = await getFavoriteProducts(user.id);
     return NextResponse.json({ products });
   } catch (error) {
-    console.error("ACCOUNT FAVORITES GET ERROR:", error);
+    logServerError("account-favorites-get", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)
@@ -38,8 +40,20 @@ export async function POST(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "favorites-post");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
+    const parsed = favoriteMutationSchema.safeParse(await req.json());
+
+    if (!parsed.success) {
+      return NextResponse.json({ message: "관심상품 요청값이 올바르지 않습니다." }, { status: 400 });
+    }
+
+    const body = parsed.data;
 
     if (Array.isArray(body.productIds)) {
       await mergeFavoriteProducts(
@@ -58,15 +72,13 @@ export async function POST(req: NextRequest) {
     await addFavoriteProduct(user.id, String(body.productId));
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {
-    console.error("ACCOUNT FAVORITES POST ERROR:", error);
+    logServerError("account-favorites-post", error);
     return NextResponse.json(
       {
         message:
-          error instanceof Error
-            ? error.message
-            : isMissingMemberTablesError(error)
-              ? "member_schema.sql 적용이 필요합니다."
-              : "관심상품 저장 중 오류가 발생했습니다.",
+          isMissingMemberTablesError(error)
+            ? "member_schema.sql 적용이 필요합니다."
+            : "관심상품 저장 중 오류가 발생했습니다.",
       },
       { status: 500 }
     );
@@ -80,6 +92,12 @@ export async function DELETE(req: NextRequest) {
     return response;
   }
 
+  const securityResponse = enforceAccountMutationSecurity(req, "favorites-delete");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
     const { searchParams } = new URL(req.url);
     const productId = searchParams.get("productId");
@@ -91,7 +109,7 @@ export async function DELETE(req: NextRequest) {
     await removeFavoriteProduct(user.id, productId);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("ACCOUNT FAVORITES DELETE ERROR:", error);
+    logServerError("account-favorites-delete", error);
     return NextResponse.json(
       {
         message: isMissingMemberTablesError(error)

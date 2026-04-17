@@ -4,12 +4,14 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getFriendlyAuthErrorMessage } from "@/lib/auth-messages";
+import { getSafeRedirectPath } from "@/lib/redirects";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { getValidationMessage, loginSchema } from "@/lib/validation";
 
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect") || "/mypage";
+  const redirectTo = getSafeRedirectPath(searchParams.get("redirect"), "/mypage");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,9 +22,17 @@ export default function LoginForm() {
     setLoading(true);
     setMessage("");
 
+    const parsed = loginSchema.safeParse({ email, password });
+
+    if (!parsed.success) {
+      setMessage(getValidationMessage(parsed.error, "로그인 정보를 확인해주세요."));
+      setLoading(false);
+      return;
+    }
+
     try {
       const supabase = createBrowserSupabaseClient();
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword(parsed.data);
 
       if (error) {
         setMessage(

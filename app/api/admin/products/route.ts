@@ -1,19 +1,20 @@
 import { NextResponse } from "next/server";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { buildAdminProductPayload } from "@/lib/admin-products";
+import { enforceAdminMutationSecurity, jsonError, jsonOk, requireAdminApiUser } from "@/lib/admin-api";
+import { logServerError } from "@/lib/security";
+import { createAdminSupabaseClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
 
-function makeSlug(name: string) {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9가-힣-]/g, "");
-}
-
 export async function GET() {
+  const { response } = await requireAdminApiUser();
+
+  if (response) {
+    return response;
+  }
+
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createAdminSupabaseClient();
 
     const { data, error } = await supabase
       .from("products")
@@ -21,56 +22,56 @@ export async function GET() {
       .order("created_at", { ascending: false });
 
     if (error) {
-      console.error("SUPABASE GET ERROR:", error);
-      return NextResponse.json({ message: error.message }, { status: 500 });
+      logServerError("admin-products-get", error);
+      return jsonError("상품 목록 조회 중 오류가 발생했습니다.", 500);
     }
 
-    return NextResponse.json({ products: data ?? [] }, { status: 200 });
+    return jsonOk({ products: data ?? [] });
   } catch (error) {
-    console.error("API GET ERROR:", error);
-    return NextResponse.json(
-      { message: "상품 목록 조회 중 오류가 발생했습니다." },
-      { status: 500 }
-    );
+    logServerError("admin-products-get", error);
+    return jsonError("상품 목록 조회 중 오류가 발생했습니다.", 500);
   }
 }
 
 export async function POST(req: Request) {
+  const { response } = await requireAdminApiUser();
+
+  if (response) {
+    return response;
+  }
+
+  const securityResponse = enforceAdminMutationSecurity(req, "products-create");
+
+  if (securityResponse) {
+    return securityResponse;
+  }
+
   try {
-    const body = await req.json();
-    const { name, price, spec, shipping, description, image_url, is_active } = body;
+    const body = (await req.json()) as Record<string, unknown>;
+    const { payload, error: payloadError } = await buildAdminProductPayload(body, {
+      isCreate: true,
+    });
 
-    const supabase = await createServerSupabaseClient();
-    const slug = makeSlug(name);
+    if (payloadError || !payload) {
+      return jsonError(payloadError || "상품 등록 값이 올바르지 않습니다.", 400);
+    }
 
-    const { data, error } = await supabase
+    const supabase = createAdminSupabaseClient();
+
+    const { data, error: insertError } = await supabase
       .from("products")
-      .insert([
-        {
-          name,
-          slug,
-          price,
-          spec,
-          shipping,
-          description,
-          image_url,
-          is_active,
-        },
-      ])
+      .insert([payload])
       .select()
       .single();
 
-    if (error) {
-      console.error("SUPABASE INSERT ERROR:", error);
-      return NextResponse.json({ message: error.message }, { status: 500 });
+    if (insertError) {
+      logServerError("admin-products-create", insertError);
+      return jsonError("상품 등록 중 오류가 발생했습니다.", 500);
     }
 
-    return NextResponse.json({ product: data }, { status: 200 });
+    return jsonOk({ product: data }, 201);
   } catch (error) {
-    console.error("API POST ERROR:", error);
-    return NextResponse.json(
-      { message: "상품 등록 중 오류가 발생했습니다." },
-      { status: 500 }
-    );
+    logServerError("admin-products-create", error);
+    return jsonError("상품 등록 중 오류가 발생했습니다.", 500);
   }
 }
