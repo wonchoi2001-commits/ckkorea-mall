@@ -1,4 +1,9 @@
 node_modules
 .next
+.next-dev
+.vercel
 .env.local
-package-lock.json
+.env.*.local
+.DS_Store
+*.log
+*.tsbuildinfo

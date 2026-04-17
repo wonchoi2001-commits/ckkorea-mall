@@ -1,0 +1,1248 @@
+{
+  "refreshedAt": "2026-04-16T15:26:39.666Z",
+  "featuredCount": 22,
+  "featuredProducts": [
+    {
+      "name": "폴리머 타일접착제 20kg",
+      "slug": "폴리머-타일접착제-20kg",
+      "price": 11800,
+      "spec": "20kg",
+      "shipping": "택배",
+      "stock": 140,
+      "description": "폴리머 타일접착제 20kg은 미장, 마감, 보수, 단열 공정에서 자주 찾는 건재류로, 현장 보수와 반복 발주에 맞춰 비교가 쉬운 규격으로 구성했습니다. 20kg 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/construction-materials.svg",
+      "is_active": true,
+      "category": "건재 > 타일접착제",
+      "brand": "CK Build",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "건재",
+      "category_sub": "타일접착제",
+      "manufacturer": "국내 건재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 108,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "추천",
+        "badgeTone": "blue",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "건재",
+          "타일접착제",
+          "20kg",
+          "폴리머 타일접착제 20kg",
+          "타일본드",
+          "내장마감"
+        ],
+        "metaTitle": "폴리머 타일접착제 20kg | 건재 | 씨케이코리아",
+        "metaDescription": "건재 카테고리의 폴리머 타일접착제 20kg 상품입니다. 20kg 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "폴리머 타일접착제 20kg은 미장, 마감, 보수, 단열 공정에서 자주 찾는 건재류로, 현장 보수와 반복 발주에 맞춰 비교가 쉬운 규격으로 구성했습니다. 20kg 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "타일접착제 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "타일 부착",
+          "실내 벽체 마감",
+          "보수 시공"
+        ],
+        "specifications": "20kg / 판매단위 1포 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "바탕면 상태와 사용량 산출을 먼저 확인하고 시공해 주세요."
+      },
+      "short_description": "건재 현장에서 자주 찾는 타일접착제 상품입니다. 20kg 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 현장 보수와 반복 발주에 맞춰 비교가 쉬운 규격으로 구성했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "건재상 공개 기준 seed",
+      "source_url": "seed://stage4/건재/타일접착제/폴리머-타일접착제-20kg",
+      "search_keywords": "건재, 타일접착제, 20kg, 폴리머 타일접착제 20kg, 타일본드, 내장마감",
+      "sort_order": 27,
+      "quality_score": 108
+    },
+    {
+      "name": "세척모래 20kg",
+      "slug": "세척모래-20kg",
+      "price": 3900,
+      "spec": "20kg",
+      "shipping": "화물배송",
+      "stock": 120,
+      "description": "세척모래 20kg은 충진, 배수, 조경, 미장 보조에 쓰는 현장형 골재류로, 소포장과 현장형 규격을 함께 구성해 소량 보수부터 운용이 가능합니다. 20kg 기준으로 검토할 수 있고, 배송 방식은 화물배송 기준으로 안내합니다.",
+      "image_url": "/images/catalog/aggregate.svg",
+      "is_active": true,
+      "category": "골재 > 세척모래",
+      "brand": "CK Stone",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "골재",
+      "category_sub": "세척모래",
+      "manufacturer": "국내 골재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 100,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": null,
+        "badgeTone": "slate",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "골재",
+          "세척모래",
+          "20kg",
+          "세척모래 20kg",
+          "모래",
+          "미장재"
+        ],
+        "metaTitle": "세척모래 20kg | 골재 | 씨케이코리아",
+        "metaDescription": "골재 카테고리의 세척모래 20kg 상품입니다. 20kg 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "세척모래 20kg은 충진, 배수, 조경, 미장 보조에 쓰는 현장형 골재류로, 소포장과 현장형 규격을 함께 구성해 소량 보수부터 운용이 가능합니다. 20kg 기준으로 검토할 수 있고, 배송 방식은 화물배송 기준으로 안내합니다.",
+        "features": [
+          "세척모래 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "미장용 혼합",
+          "조적 보수",
+          "바닥 메움"
+        ],
+        "specifications": "20kg / 판매단위 1포 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 화물배송 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "하차 동선과 현장 반입 조건을 사전에 확인해 주세요."
+      },
+      "short_description": "골재 현장에서 자주 찾는 세척모래 상품입니다. 20kg 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 소포장과 현장형 규격을 함께 구성해 소량 보수부터 운용이 가능합니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "골재몰 공개 기준 seed",
+      "source_url": "seed://stage4/골재/세척모래/세척모래-20kg",
+      "search_keywords": "골재, 세척모래, 20kg, 세척모래 20kg, 모래, 미장재",
+      "sort_order": 41,
+      "quality_score": 100
+    },
+    {
+      "name": "혼합골재 40kg",
+      "slug": "혼합골재-40kg",
+      "price": 11500,
+      "spec": "40kg",
+      "shipping": "화물배송",
+      "stock": 44,
+      "description": "혼합골재 40kg은 충진, 배수, 미장, 조경 공정에서 자주 쓰는 골재류로, 40kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다. 40kg 규격 기준으로 검토할 수 있으며, 배송 방식은 화물배송 기준으로 안내합니다.",
+      "image_url": "/images/catalog/aggregate.svg",
+      "is_active": true,
+      "category": "골재 > 혼합골재",
+      "brand": "CK Stone",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "골재",
+      "category_sub": "혼합골재",
+      "manufacturer": "국내 골재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1포",
+        "shippingType": "화물배송",
+        "qualityScore": 101,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "혼합골재 40kg은 충진, 배수, 미장, 조경 공정에서 자주 쓰는 골재류로, 40kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다.",
+        "features": [
+          "혼합골재 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "중량물 또는 장척물 성격을 고려해 납품 조건 확인이 중요합니다."
+        ],
+        "applications": [
+          "기초 보강",
+          "현장 메움",
+          "배수층 보완"
+        ],
+        "specifications": "40kg / 판매단위 1포 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "중량물 또는 장척물 기준으로 화물배송 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "중량물 특성상 반입 동선과 하차 장비 조건을 함께 확인해 주세요."
+      },
+      "short_description": "골재 현장에서 자주 찾는 혼합골재 상품입니다. 40kg 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다.",
+      "quote_required": false,
+      "bulky_item": true,
+      "source_site": "골재 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%ED%98%BC%ED%95%A9%EA%B3%A8%EC%9E%AC%2040kg",
+      "search_keywords": "혼합골재, 40kg, 골재",
+      "sort_order": 44,
+      "quality_score": 101
+    },
+    {
+      "name": "스크류드라이버 세트 8pcs",
+      "slug": "스크류드라이버-세트-8pcs",
+      "price": 13800,
+      "spec": "8pcs",
+      "shipping": "택배",
+      "stock": 80,
+      "description": "스크류드라이버 세트 8pcs은 시공, 절단, 체결, 유지보수 작업에 필요한 공구류로, 현장 작업성과 즉시 투입성을 고려한 일반 구매형 품목입니다. 8pcs 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/tools.svg",
+      "is_active": true,
+      "category": "공구 > 드라이버세트",
+      "brand": "CK Tool",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "공구",
+      "category_sub": "드라이버세트",
+      "manufacturer": "국내 공구 유통 협력사",
+      "origin": "중국",
+      "options_json": {
+        "qualityScore": 108,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "추천",
+        "badgeTone": "blue",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "공구",
+          "드라이버세트",
+          "8pcs",
+          "스크류드라이버 세트 8pcs",
+          "드라이버",
+          "수공구"
+        ],
+        "metaTitle": "스크류드라이버 세트 8pcs | 공구 | 씨케이코리아",
+        "metaDescription": "공구 카테고리의 스크류드라이버 세트 8pcs 상품입니다. 8pcs 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "스크류드라이버 세트 8pcs은 시공, 절단, 체결, 유지보수 작업에 필요한 공구류로, 현장 작업성과 즉시 투입성을 고려한 일반 구매형 품목입니다. 8pcs 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "드라이버세트 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "전기 보수",
+          "가구 조립",
+          "현장 유지보수"
+        ],
+        "specifications": "8pcs / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "사용 전 안전보호구와 공구 호환 규격을 확인해 주세요."
+      },
+      "short_description": "공구 현장에서 자주 찾는 드라이버세트 상품입니다. 8pcs 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 현장 작업성과 즉시 투입성을 고려한 일반 구매형 품목입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "공구상 공개 기준 seed",
+      "source_url": "seed://stage4/공구/드라이버세트/스크류드라이버-세트-8pcs",
+      "search_keywords": "공구, 드라이버세트, 8pcs, 스크류드라이버 세트 8pcs, 드라이버, 수공구",
+      "sort_order": 108,
+      "quality_score": 108
+    },
+    {
+      "name": "내수합판 11.5T 1220 x 2440",
+      "slug": "내수합판-115t-1220-x-2440",
+      "price": 26800,
+      "spec": "11.5T / 1220 x 2440mm",
+      "shipping": "현장납품 문의",
+      "stock": null,
+      "description": "내수합판 11.5T 1220 x 2440은 구조, 마감, 데크, 인테리어 작업에 쓰는 목재류로, 11.5T / 1220 x 2440mm 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 장척물과 판재류는 현장 납품과 절단 조건에 따라 상담이 필요한 품목입니다. 11.5T / 1220 x 2440mm 규격 기준으로 검토할 수 있으며, 배송 방식은 현장납품 문의 기준으로 안내합니다.",
+      "image_url": "/images/catalog/lumber.svg",
+      "is_active": true,
+      "category": "목재 > 합판",
+      "brand": "CK Timber",
+      "unit": "1장",
+      "featured": true,
+      "category_main": "목재",
+      "category_sub": "합판",
+      "manufacturer": "국내 목재 협력사",
+      "origin": "인도네시아",
+      "options_json": {
+        "packageUnit": "1장",
+        "shippingType": "현장납품 문의",
+        "qualityScore": 101,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "내수합판 11.5T 1220 x 2440은 구조, 마감, 데크, 인테리어 작업에 쓰는 목재류로, 11.5T / 1220 x 2440mm 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 장척물과 판재류는 현장 납품과 절단 조건에 따라 상담이 필요한 품목입니다.",
+        "features": [
+          "합판 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "중량물 또는 장척물 성격을 고려해 납품 조건 확인이 중요합니다."
+        ],
+        "applications": [
+          "습기 구간 보강",
+          "바닥 보수",
+          "가설 구조물"
+        ],
+        "specifications": "11.5T / 1220 x 2440mm / 판매단위 1장 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "중량물 또는 장척물 기준으로 현장납품 문의 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "함수율, 휨, 절단 조건을 시공 전에 다시 확인해 주세요."
+      },
+      "short_description": "목재 현장에서 자주 찾는 합판 상품입니다. 11.5T / 1220 x 2440mm 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 규격 비교와 수량 산정이 쉬운 기준으로 정리했습니다.",
+      "quote_required": true,
+      "bulky_item": true,
+      "source_site": "목재 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EB%82%B4%EC%88%98%ED%95%A9%ED%8C%90%2011.5T%201220%20x%202440",
+      "search_keywords": "내수합판, 11.5T, 1220x2440",
+      "sort_order": 59,
+      "quality_score": 101
+    },
+    {
+      "name": "내수합판 18T 1220 x 2440",
+      "slug": "내수합판-18t-1220-x-2440",
+      "price": 27500,
+      "spec": "18T 1220 x 2440",
+      "shipping": "택배",
+      "stock": 56,
+      "description": "내수합판 18T 1220 x 2440은 구조, 마감, 데크, 목공 작업에 폭넓게 쓰는 목재류로, 자주 찾는 규격을 중심으로 비교와 재발주가 쉬운 구조입니다. 18T 1220 x 2440 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/lumber.svg",
+      "is_active": true,
+      "category": "목재 > 합판",
+      "brand": "CK Timber",
+      "unit": "1장",
+      "featured": true,
+      "category_main": "목재",
+      "category_sub": "합판",
+      "manufacturer": "국내 목재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 108,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "추천",
+        "badgeTone": "blue",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "목재",
+          "합판",
+          "18T 1220 x 2440",
+          "내수합판 18T 1220 x 2440",
+          "내수합판",
+          "판재"
+        ],
+        "metaTitle": "내수합판 18T 1220 x 2440 | 목재 | 씨케이코리아",
+        "metaDescription": "목재 카테고리의 내수합판 18T 1220 x 2440 상품입니다. 18T 1220 x 2440 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "내수합판 18T 1220 x 2440은 구조, 마감, 데크, 목공 작업에 폭넓게 쓰는 목재류로, 자주 찾는 규격을 중심으로 비교와 재발주가 쉬운 구조입니다. 18T 1220 x 2440 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "합판 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "가설 구조",
+          "내장 바탕",
+          "보강 판재"
+        ],
+        "specifications": "18T 1220 x 2440 / 판매단위 1장 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "함수율, 절단 오차, 운송 파손 가능성을 함께 고려해 주세요."
+      },
+      "short_description": "목재 현장에서 자주 찾는 합판 상품입니다. 18T 1220 x 2440 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 자주 찾는 규격을 중심으로 비교와 재발주가 쉬운 구조입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "목재상 공개 기준 seed",
+      "source_url": "seed://stage4/목재/합판/내수합판-18t-1220-x-2440",
+      "search_keywords": "목재, 합판, 18T 1220 x 2440, 내수합판 18T 1220 x 2440, 내수합판, 판재",
+      "sort_order": 72,
+      "quality_score": 108
+    },
+    {
+      "name": "청테이프 45mm x 25M",
+      "slug": "청테이프-45mm-x-25m",
+      "price": 1800,
+      "spec": "45mm x 25M",
+      "shipping": "택배",
+      "stock": 210,
+      "description": "청테이프 45mm x 25M은 보양, 보조 시공, 현장 정리 작업에서 빠지기 쉬운 소모품류로, 작업 흐름이 끊기지 않도록 기본 품목을 쉽게 재주문할 수 있는 구성입니다. 45mm x 25M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/consumables.svg",
+      "is_active": true,
+      "category": "소모품/부자재 > 청테이프",
+      "brand": "CK Supply",
+      "unit": "1롤",
+      "featured": true,
+      "category_main": "소모품/부자재",
+      "category_sub": "청테이프",
+      "manufacturer": "국내 소모품 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 100,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": null,
+        "badgeTone": "slate",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "소모품/부자재",
+          "청테이프",
+          "45mm x 25M",
+          "청테이프 45mm x 25M",
+          "포장테이프",
+          "현장부자재"
+        ],
+        "metaTitle": "청테이프 45mm x 25M | 소모품/부자재 | 씨케이코리아",
+        "metaDescription": "소모품/부자재 카테고리의 청테이프 45mm x 25M 상품입니다. 45mm x 25M 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "청테이프 45mm x 25M은 보양, 보조 시공, 현장 정리 작업에서 빠지기 쉬운 소모품류로, 작업 흐름이 끊기지 않도록 기본 품목을 쉽게 재주문할 수 있는 구성입니다. 45mm x 25M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "청테이프 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "임시 고정",
+          "포장 작업",
+          "현장 보양"
+        ],
+        "specifications": "45mm x 25M / 판매단위 1롤 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "사용 환경에 맞는 규격과 소모량을 미리 산정해 주세요."
+      },
+      "short_description": "소모품/부자재 현장에서 자주 찾는 청테이프 상품입니다. 45mm x 25M 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 작업 흐름이 끊기지 않도록 기본 품목을 쉽게 재주문할 수 있는 구성입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "현장소모품 공개 기준 seed",
+      "source_url": "seed://stage4/소모품부자재/청테이프/청테이프-45mm-x-25m",
+      "search_keywords": "소모품/부자재, 청테이프, 45mm x 25M, 청테이프 45mm x 25M, 포장테이프, 현장부자재",
+      "sort_order": 181,
+      "quality_score": 100
+    },
+    {
+      "name": "경량 안전모 통풍형 백색",
+      "slug": "경량-안전모-통풍형-백색",
+      "price": 12800,
+      "spec": "통풍형 백색",
+      "shipping": "택배",
+      "stock": 82,
+      "description": "경량 안전모 통풍형 백색은 현장 안전 확보를 위해 기본적으로 갖추는 보호구류로, 작업자 지급과 반복 구매에 맞춰 실용적인 규격을 중심으로 정리했습니다. 통풍형 백색 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/safety.svg",
+      "is_active": true,
+      "category": "안전용품 > 안전모",
+      "brand": "CK Safety",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "안전용품",
+      "category_sub": "안전모",
+      "manufacturer": "국내 안전용품 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 108,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "추천",
+        "badgeTone": "blue",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "안전용품",
+          "안전모",
+          "통풍형 백색",
+          "경량 안전모 통풍형 백색",
+          "보호구",
+          "현장안전"
+        ],
+        "metaTitle": "경량 안전모 통풍형 백색 | 안전용품 | 씨케이코리아",
+        "metaDescription": "안전용품 카테고리의 경량 안전모 통풍형 백색 상품입니다. 통풍형 백색 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "경량 안전모 통풍형 백색은 현장 안전 확보를 위해 기본적으로 갖추는 보호구류로, 작업자 지급과 반복 구매에 맞춰 실용적인 규격을 중심으로 정리했습니다. 통풍형 백색 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "안전모 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "건설 현장",
+          "설비 점검",
+          "실내 공사"
+        ],
+        "specifications": "통풍형 백색 / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "사용 환경에 맞는 보호 등급과 착용 적합성을 확인해 주세요."
+      },
+      "short_description": "안전용품 현장에서 자주 찾는 안전모 상품입니다. 통풍형 백색 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 작업자 지급과 반복 구매에 맞춰 실용적인 규격을 중심으로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "안전용품 공개 기준 seed",
+      "source_url": "seed://stage4/안전용품/안전모/경량-안전모-통풍형-백색",
+      "search_keywords": "안전용품, 안전모, 통풍형 백색, 경량 안전모 통풍형 백색, 보호구, 현장안전",
+      "sort_order": 148,
+      "quality_score": 108
+    },
+    {
+      "name": "멀티탭 6구 5M",
+      "slug": "멀티탭-6구-5m",
+      "price": 14800,
+      "spec": "6구 5M",
+      "shipping": "택배",
+      "stock": 80,
+      "description": "멀티탭 6구 5M은 기본 전기 보수와 현장 배선 작업에 자주 쓰는 범용 전기자재로, 실무에서 자주 쓰는 규격 중심으로 정리해 빠른 재구매에 적합합니다. 6구 5M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/electrical.svg",
+      "is_active": true,
+      "category": "전기자재 > 멀티탭",
+      "brand": "CK Electric",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "전기자재",
+      "category_sub": "멀티탭",
+      "manufacturer": "국내 전기자재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 106,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "인기",
+        "badgeTone": "amber",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "전기자재",
+          "멀티탭",
+          "6구 5M",
+          "멀티탭 6구 5M",
+          "콘센트"
+        ],
+        "metaTitle": "멀티탭 6구 5M | 전기자재 | 씨케이코리아",
+        "metaDescription": "전기자재 카테고리의 멀티탭 6구 5M 상품입니다. 6구 5M 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "멀티탭 6구 5M은 기본 전기 보수와 현장 배선 작업에 자주 쓰는 범용 전기자재로, 실무에서 자주 쓰는 규격 중심으로 정리해 빠른 재구매에 적합합니다. 6구 5M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "멀티탭 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "현장 전원 분배",
+          "사무공간 사용",
+          "장비 전원 연결"
+        ],
+        "specifications": "6구 5M / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "전기 안전 기준과 설치 환경을 먼저 확인해 주세요."
+      },
+      "short_description": "전기자재 현장에서 자주 찾는 멀티탭 상품입니다. 6구 5M 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 실무에서 자주 쓰는 규격 중심으로 정리해 빠른 재구매에 적합합니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "전기자재 공개 기준 seed",
+      "source_url": "seed://stage4/전기자재/멀티탭/멀티탭-6구-5m",
+      "search_keywords": "전기자재, 멀티탭, 6구 5M, 멀티탭 6구 5M, 콘센트",
+      "sort_order": 127,
+      "quality_score": 106
+    },
+    {
+      "name": "건축용 중성 실리콘 백색 300ml",
+      "slug": "건축용-중성-실리콘-백색-300ml",
+      "price": 3900,
+      "spec": "백색 300ml",
+      "shipping": "택배",
+      "stock": 180,
+      "description": "건축용 중성 실리콘 백색 300ml은 실링, 접착, 충진, 보수 작업에 바로 쓰는 소모재로, 현장 소모와 빠른 보수 작업에 맞춰 바로 주문 가능한 구성입니다. 백색 300ml 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/adhesives.svg",
+      "is_active": true,
+      "category": "접착제/실리콘 > 중성실리콘",
+      "brand": "CK Seal",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "접착제/실리콘",
+      "category_sub": "중성실리콘",
+      "manufacturer": "국내 접착제 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 108,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "인기",
+        "badgeTone": "amber",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "접착제/실리콘",
+          "중성실리콘",
+          "백색 300ml",
+          "건축용 중성 실리콘 백색 300ml",
+          "실리콘",
+          "실링재"
+        ],
+        "metaTitle": "건축용 중성 실리콘 백색 300ml | 접착제/실리콘 | 씨케이코리아",
+        "metaDescription": "접착제/실리콘 카테고리의 건축용 중성 실리콘 백색 300ml 상품입니다. 백색 300ml 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "건축용 중성 실리콘 백색 300ml은 실링, 접착, 충진, 보수 작업에 바로 쓰는 소모재로, 현장 소모와 빠른 보수 작업에 맞춰 바로 주문 가능한 구성입니다. 백색 300ml 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "중성실리콘 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "창호 실링",
+          "내외장 마감",
+          "패널 틈새 보수"
+        ],
+        "specifications": "백색 300ml / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "도포 면 상태, 경화 시간, 사용 온도를 먼저 확인해 주세요."
+      },
+      "short_description": "접착제/실리콘 현장에서 자주 찾는 중성실리콘 상품입니다. 백색 300ml 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 현장 소모와 빠른 보수 작업에 맞춰 바로 주문 가능한 구성입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "실리콘/접착제 공개 기준 seed",
+      "source_url": "seed://stage4/접착제실리콘/중성실리콘/건축용-중성-실리콘-백색-300ml",
+      "search_keywords": "접착제/실리콘, 중성실리콘, 백색 300ml, 건축용 중성 실리콘 백색 300ml, 실리콘, 실링재",
+      "sort_order": 161,
+      "quality_score": 108
+    },
+    {
+      "name": "스텐 웨지앙카 M6 x 50mm",
+      "slug": "스텐-웨지앙카-m6-x-50mm",
+      "price": 320,
+      "spec": "M6 x 50mm",
+      "shipping": "택배",
+      "stock": 950,
+      "description": "스텐 웨지앙카 M6 x 50mm은 체결, 고정, 보강 작업에서 빠르게 회전하는 철물류로, 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다. M6 x 50mm 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/hardware.svg",
+      "is_active": true,
+      "category": "철물 > 웨지앙카",
+      "brand": "CK Fasten",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "철물",
+      "category_sub": "웨지앙카",
+      "manufacturer": "국내 철물 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 110,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "인기",
+        "badgeTone": "amber",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "철물",
+          "웨지앙카",
+          "M6 x 50mm",
+          "스텐 웨지앙카 M6 x 50mm",
+          "앙카볼트",
+          "콘크리트고정"
+        ],
+        "metaTitle": "스텐 웨지앙카 M6 x 50mm | 철물 | 씨케이코리아",
+        "metaDescription": "철물 카테고리의 스텐 웨지앙카 M6 x 50mm 상품입니다. M6 x 50mm 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "스텐 웨지앙카 M6 x 50mm은 체결, 고정, 보강 작업에서 빠르게 회전하는 철물류로, 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다. M6 x 50mm 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "웨지앙카 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "콘크리트 베이스 고정",
+          "난간 브라켓 체결",
+          "설비 프레임 고정"
+        ],
+        "specifications": "M6 x 50mm / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "피착재 상태와 허용 하중을 확인한 뒤 시공에 사용해 주세요."
+      },
+      "short_description": "철물 현장에서 자주 찾는 웨지앙카 상품입니다. M6 x 50mm 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "철물점 공개 기준 seed",
+      "source_url": "seed://stage4/철물/웨지앙카/스텐-웨지앙카-m6-x-50mm",
+      "search_keywords": "철물, 웨지앙카, M6 x 50mm, 스텐 웨지앙카 M6 x 50mm, 앙카볼트, 콘크리트고정, 스텐앙카",
+      "sort_order": 1,
+      "quality_score": 110
+    },
+    {
+      "name": "스텐 웨지앙카 M10 x 100mm",
+      "slug": "스텐-웨지앙카-m10-x-100mm",
+      "price": 790,
+      "spec": "M10 x 100mm",
+      "shipping": "택배",
+      "stock": 760,
+      "description": "스텐 웨지앙카 M10 x 100mm은 체결, 고정, 보강 작업에서 빠르게 회전하는 철물류로, 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다. M10 x 100mm 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/hardware.svg",
+      "is_active": true,
+      "category": "철물 > 웨지앙카",
+      "brand": "CK Fasten",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "철물",
+      "category_sub": "웨지앙카",
+      "manufacturer": "국내 철물 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 116,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": 890,
+        "badge": "인기",
+        "badgeTone": "amber",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "철물",
+          "웨지앙카",
+          "M10 x 100mm",
+          "스텐 웨지앙카 M10 x 100mm",
+          "앙카볼트",
+          "콘크리트고정"
+        ],
+        "metaTitle": "스텐 웨지앙카 M10 x 100mm | 철물 | 씨케이코리아",
+        "metaDescription": "철물 카테고리의 스텐 웨지앙카 M10 x 100mm 상품입니다. M10 x 100mm 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "스텐 웨지앙카 M10 x 100mm은 체결, 고정, 보강 작업에서 빠르게 회전하는 철물류로, 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다. M10 x 100mm 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "웨지앙카 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "콘크리트 베이스 고정",
+          "난간 브라켓 체결",
+          "설비 프레임 고정"
+        ],
+        "specifications": "M10 x 100mm / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "피착재 상태와 허용 하중을 확인한 뒤 시공에 사용해 주세요."
+      },
+      "short_description": "철물 현장에서 자주 찾는 웨지앙카 상품입니다. M10 x 100mm 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 반복 구매와 기본 재고 운영에 맞춰 규격 비교가 쉬운 형태로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "철물점 공개 기준 seed",
+      "source_url": "seed://stage4/철물/웨지앙카/스텐-웨지앙카-m10-x-100mm",
+      "search_keywords": "철물, 웨지앙카, M10 x 100mm, 스텐 웨지앙카 M10 x 100mm, 앙카볼트, 콘크리트고정, 스텐앙카",
+      "sort_order": 3,
+      "quality_score": 116
+    },
+    {
+      "name": "PVC 배수 파이프 75A x 4M",
+      "slug": "pvc-배수-파이프-75a-x-4m",
+      "price": 9800,
+      "spec": "75A x 4M",
+      "shipping": "택배",
+      "stock": 90,
+      "description": "PVC 배수 파이프 75A x 4M은 배수, 급수, 연결, 차단 작업에 필요한 PVC 자재류로, 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다. 75A x 4M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/pvc.svg",
+      "is_active": true,
+      "category": "PVC 배관 및 부속 > PVC 파이프",
+      "brand": "CK Pipe",
+      "unit": "1본",
+      "featured": true,
+      "category_main": "PVC 배관 및 부속",
+      "category_sub": "PVC 파이프",
+      "manufacturer": "국내 설비자재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 110,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "인기",
+        "badgeTone": "amber",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "PVC 배관 및 부속",
+          "PVC 파이프",
+          "75A x 4M",
+          "PVC 배수 파이프 75A x 4M",
+          "PVC파이프",
+          "배수관"
+        ],
+        "metaTitle": "PVC 배수 파이프 75A x 4M | PVC 배관 및 부속 | 씨케이코리아",
+        "metaDescription": "PVC 배관 및 부속 카테고리의 PVC 배수 파이프 75A x 4M 상품입니다. 75A x 4M 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "PVC 배수 파이프 75A x 4M은 배수, 급수, 연결, 차단 작업에 필요한 PVC 자재류로, 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다. 75A x 4M 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "PVC 파이프 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "배수 배관",
+          "배관 교체",
+          "보수 설비"
+        ],
+        "specifications": "75A x 4M / 판매단위 1본 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "구경, 연결 방식, 접착제 호환 여부를 먼저 확인해 주세요."
+      },
+      "short_description": "PVC 배관 및 부속 현장에서 자주 찾는 PVC 파이프 상품입니다. 75A x 4M 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "배관자재 공개 기준 seed",
+      "source_url": "seed://stage4/pvc-배관-및-부속/pvc-파이프/pvc-배수-파이프-75a-x-4m",
+      "search_keywords": "PVC 배관 및 부속, PVC 파이프, 75A x 4M, PVC 배수 파이프 75A x 4M, PVC파이프, 배수관, 설비자재",
+      "sort_order": 82,
+      "quality_score": 110
+    },
+    {
+      "name": "PVC 볼밸브 20A",
+      "slug": "pvc-볼밸브-20a",
+      "price": 5200,
+      "spec": "20A",
+      "shipping": "택배",
+      "stock": 120,
+      "description": "PVC 볼밸브 20A은 배수, 급수, 연결, 차단 작업에 필요한 PVC 자재류로, 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다. 20A 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/pvc.svg",
+      "is_active": true,
+      "category": "PVC 배관 및 부속 > PVC 볼밸브",
+      "brand": "CK Pipe",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "PVC 배관 및 부속",
+      "category_sub": "PVC 볼밸브",
+      "manufacturer": "국내 설비자재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "qualityScore": 110,
+        "collectionMode": "stage4-structured-seed",
+        "priceKnown": true,
+        "salePrice": null,
+        "badge": "추천",
+        "badgeTone": "blue",
+        "minimumOrderQuantity": 1,
+        "tags": [
+          "PVC 배관 및 부속",
+          "PVC 볼밸브",
+          "20A",
+          "PVC 볼밸브 20A",
+          "볼밸브",
+          "PVC밸브"
+        ],
+        "metaTitle": "PVC 볼밸브 20A | PVC 배관 및 부속 | 씨케이코리아",
+        "metaDescription": "PVC 배관 및 부속 카테고리의 PVC 볼밸브 20A 상품입니다. 20A 규격, 배송 방식, 구매 정보를 확인하세요."
+      },
+      "detail_json": {
+        "overview": "PVC 볼밸브 20A은 배수, 급수, 연결, 차단 작업에 필요한 PVC 자재류로, 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다. 20A 기준으로 검토할 수 있고, 배송 방식은 택배 기준으로 안내합니다.",
+        "features": [
+          "PVC 볼밸브 품목 기준으로 규격과 판매단위를 빠르게 확인하기 좋습니다.",
+          "즉시결제 또는 반복 구매 대응이 쉬운 기준으로 정리했습니다.",
+          "소량 보수부터 일반 현장 재고 운영까지 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "배관 차단",
+          "유지보수",
+          "라인 교체 작업"
+        ],
+        "specifications": "20A / 판매단위 1개 기준입니다. 실제 적용 전 현장 치수와 수량을 다시 확인해 주세요.",
+        "shipping_notice": "일반 자재 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 운임과 납기가 달라질 수 있습니다.",
+        "caution": "구경, 연결 방식, 접착제 호환 여부를 먼저 확인해 주세요."
+      },
+      "short_description": "PVC 배관 및 부속 현장에서 자주 찾는 PVC 볼밸브 상품입니다. 20A 규격 기준으로 바로 비교하고 재구매하기 좋습니다. 배관 보수와 반복 구매에 맞춰 구경별로 빠르게 비교할 수 있습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "배관자재 공개 기준 seed",
+      "source_url": "seed://stage4/pvc-배관-및-부속/pvc-볼밸브/pvc-볼밸브-20a",
+      "search_keywords": "PVC 배관 및 부속, PVC 볼밸브, 20A, PVC 볼밸브 20A, 볼밸브, PVC밸브, 배관밸브",
+      "sort_order": 97,
+      "quality_score": 110
+    },
+    {
+      "name": "포틀랜드 시멘트 25kg",
+      "slug": "포틀랜드-시멘트-25kg",
+      "price": 6900,
+      "spec": "25kg",
+      "shipping": "택배",
+      "stock": 90,
+      "description": "포틀랜드 시멘트 25kg은 시공, 마감, 보수 공정에서 자주 찾는 건재류로, 25kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다. 25kg 규격 기준으로 검토할 수 있으며, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/construction-materials.svg",
+      "is_active": true,
+      "category": "건재 > 시멘트",
+      "brand": "CK Build",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "건재",
+      "category_sub": "시멘트",
+      "manufacturer": "국내 건재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1포",
+        "shippingType": "택배",
+        "qualityScore": 97,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "포틀랜드 시멘트 25kg은 시공, 마감, 보수 공정에서 자주 찾는 건재류로, 25kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다.",
+        "features": [
+          "시멘트 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "중량물 또는 장척물 성격을 고려해 납품 조건 확인이 중요합니다."
+        ],
+        "applications": [
+          "미장 보수",
+          "바닥 보강",
+          "기초 작업"
+        ],
+        "specifications": "25kg / 판매단위 1포 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "중량물 또는 장척물 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "바탕면 상태와 작업 순서를 먼저 확인하고 적정 사용량을 맞춰 주세요."
+      },
+      "short_description": "건재 현장에서 자주 찾는 시멘트 상품입니다. 25kg 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": true,
+      "source_site": "건축자재 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%ED%8F%AC%ED%8B%80%EB%9E%9C%EB%93%9C%20%EC%8B%9C%EB%A9%98%ED%8A%B8%2025kg",
+      "search_keywords": "시멘트, 포틀랜드, 25kg",
+      "sort_order": 19,
+      "quality_score": 97
+    },
+    {
+      "name": "침투성 방수제 18L",
+      "slug": "침투성-방수제-18l",
+      "price": 42000,
+      "spec": "18L",
+      "shipping": "화물배송",
+      "stock": 34,
+      "description": "침투성 방수제 18L은 시공, 마감, 보수 공정에서 자주 찾는 건재류로, 18L 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다. 18L 규격 기준으로 검토할 수 있으며, 배송 방식은 화물배송 기준으로 안내합니다.",
+      "image_url": "/images/catalog/construction-materials.svg",
+      "is_active": true,
+      "category": "건재 > 방수제",
+      "brand": "CK Build",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "건재",
+      "category_sub": "방수제",
+      "manufacturer": "국내 건재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1포",
+        "shippingType": "화물배송",
+        "qualityScore": 101,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "침투성 방수제 18L은 시공, 마감, 보수 공정에서 자주 찾는 건재류로, 18L 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다.",
+        "features": [
+          "방수제 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "중량물 또는 장척물 성격을 고려해 납품 조건 확인이 중요합니다."
+        ],
+        "applications": [
+          "옥상 보수",
+          "외벽 방수 보강",
+          "콘크리트 균열 보완"
+        ],
+        "specifications": "18L / 판매단위 1포 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "중량물 또는 장척물 기준으로 화물배송 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "바탕면 상태와 작업 순서를 먼저 확인하고 적정 사용량을 맞춰 주세요."
+      },
+      "short_description": "건재 현장에서 자주 찾는 방수제 상품입니다. 18L 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 현장 소모와 유지보수에 맞춰 발주하기 쉬운 기준으로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": true,
+      "source_site": "건축자재 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%B9%A8%ED%88%AC%EC%84%B1%20%EB%B0%A9%EC%88%98%EC%A0%9C%2018L",
+      "search_keywords": "방수제, 침투성 방수제, 18L",
+      "sort_order": 27,
+      "quality_score": 101
+    },
+    {
+      "name": "채움재 40kg",
+      "slug": "채움재-40kg",
+      "price": 9400,
+      "spec": "40kg",
+      "shipping": "화물배송",
+      "stock": 48,
+      "description": "채움재 40kg은 충진, 배수, 미장, 조경 공정에서 자주 쓰는 골재류로, 40kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다. 40kg 규격 기준으로 검토할 수 있으며, 배송 방식은 화물배송 기준으로 안내합니다.",
+      "image_url": "/images/catalog/aggregate.svg",
+      "is_active": true,
+      "category": "골재 > 채움재",
+      "brand": "CK Stone",
+      "unit": "1포",
+      "featured": true,
+      "category_main": "골재",
+      "category_sub": "채움재",
+      "manufacturer": "국내 골재 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1포",
+        "shippingType": "화물배송",
+        "qualityScore": 101,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "채움재 40kg은 충진, 배수, 미장, 조경 공정에서 자주 쓰는 골재류로, 40kg 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다.",
+        "features": [
+          "채움재 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "중량물 또는 장척물 성격을 고려해 납품 조건 확인이 중요합니다."
+        ],
+        "applications": [
+          "현장 채움",
+          "바닥 레벨 조정",
+          "배관 주변 보강"
+        ],
+        "specifications": "40kg / 판매단위 1포 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "중량물 또는 장척물 기준으로 화물배송 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "중량물 특성상 반입 동선과 하차 장비 조건을 함께 확인해 주세요."
+      },
+      "short_description": "골재 현장에서 자주 찾는 채움재 상품입니다. 40kg 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 소포장 기준으로 소규모 현장과 보수 작업에 활용하기 좋습니다.",
+      "quote_required": false,
+      "bulky_item": true,
+      "source_site": "골재 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%B1%84%EC%9B%80%EC%9E%AC%2040kg",
+      "search_keywords": "채움재, 40kg, 메움재",
+      "sort_order": 49,
+      "quality_score": 101
+    },
+    {
+      "name": "충전 해머드릴 20V",
+      "slug": "충전-해머드릴-20v",
+      "price": 129000,
+      "spec": "20V",
+      "shipping": "택배",
+      "stock": 18,
+      "description": "충전 해머드릴 20V은 시공, 절단, 체결, 가공 작업에 필요한 공구류로, 20V 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다. 20V 규격 기준으로 검토할 수 있으며, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/tools.svg",
+      "is_active": true,
+      "category": "공구 > 해머드릴",
+      "brand": "CK Tool",
+      "unit": "1세트",
+      "featured": true,
+      "category_main": "공구",
+      "category_sub": "해머드릴",
+      "manufacturer": "국내 유통 협력사",
+      "origin": "중국",
+      "options_json": {
+        "packageUnit": "1세트",
+        "shippingType": "택배",
+        "qualityScore": 97,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "충전 해머드릴 20V은 시공, 절단, 체결, 가공 작업에 필요한 공구류로, 20V 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다.",
+        "features": [
+          "해머드릴 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "소량 보충이나 자재점 재고 운영에도 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "콘크리트 천공",
+          "앙카 시공",
+          "설비 보수"
+        ],
+        "specifications": "20V / 판매단위 1세트 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "일반 택배 가능 품목 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "사용 전 안전장비와 공구 규격 호환 여부를 확인해 주세요."
+      },
+      "short_description": "공구 현장에서 자주 찾는 해머드릴 상품입니다. 20V 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "공구몰 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%B6%A9%EC%A0%84%20%ED%95%B4%EB%A8%B8%EB%93%9C%EB%A6%B4%2020V",
+      "search_keywords": "해머드릴, 20V, 충전드릴",
+      "sort_order": 87,
+      "quality_score": 97
+    },
+    {
+      "name": "충전 임팩드라이버 18V",
+      "slug": "충전-임팩드라이버-18v",
+      "price": 112000,
+      "spec": "18V",
+      "shipping": "택배",
+      "stock": 21,
+      "description": "충전 임팩드라이버 18V은 시공, 절단, 체결, 가공 작업에 필요한 공구류로, 18V 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다. 18V 규격 기준으로 검토할 수 있으며, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/tools.svg",
+      "is_active": true,
+      "category": "공구 > 임팩드라이버",
+      "brand": "CK Tool",
+      "unit": "1세트",
+      "featured": true,
+      "category_main": "공구",
+      "category_sub": "임팩드라이버",
+      "manufacturer": "국내 유통 협력사",
+      "origin": "중국",
+      "options_json": {
+        "packageUnit": "1세트",
+        "shippingType": "택배",
+        "qualityScore": 97,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "충전 임팩드라이버 18V은 시공, 절단, 체결, 가공 작업에 필요한 공구류로, 18V 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다.",
+        "features": [
+          "임팩드라이버 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "소량 보충이나 자재점 재고 운영에도 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "피스 체결",
+          "목재 보강",
+          "현장 유지보수"
+        ],
+        "specifications": "18V / 판매단위 1세트 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "일반 택배 가능 품목 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "사용 전 안전장비와 공구 규격 호환 여부를 확인해 주세요."
+      },
+      "short_description": "공구 현장에서 자주 찾는 임팩드라이버 상품입니다. 18V 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 현장 작업성과 유지보수를 고려해 바로구매 기준으로 정리했습니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "공구몰 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%B6%A9%EC%A0%84%20%EC%9E%84%ED%8C%A9%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84%2018V",
+      "search_keywords": "임팩드라이버, 18V, 충전임팩",
+      "sort_order": 89,
+      "quality_score": 97
+    },
+    {
+      "name": "건축용 중성 실리콘 300ml",
+      "slug": "건축용-중성-실리콘-300ml",
+      "price": 3900,
+      "spec": "300ml",
+      "shipping": "택배",
+      "stock": 160,
+      "description": "건축용 중성 실리콘 300ml은 체결, 고정, 보강 작업에서 기본적으로 검토하는 철물류로, 300ml 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다. 300ml 규격 기준으로 검토할 수 있으며, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/hardware.svg",
+      "is_active": true,
+      "category": "철물 > 실리콘",
+      "brand": "CK Select",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "철물",
+      "category_sub": "실리콘",
+      "manufacturer": "국내 철물 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1개",
+        "shippingType": "택배",
+        "qualityScore": 99,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "건축용 중성 실리콘 300ml은 체결, 고정, 보강 작업에서 기본적으로 검토하는 철물류로, 300ml 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다.",
+        "features": [
+          "실리콘 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "소량 보충이나 자재점 재고 운영에도 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "창호 실링",
+          "조인트 마감",
+          "패널 틈새 보수"
+        ],
+        "specifications": "300ml / 판매단위 1개 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "일반 택배 가능 품목 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "피착재 상태와 허용 하중을 확인한 뒤 시공에 사용해 주세요."
+      },
+      "short_description": "철물 현장에서 자주 찾는 실리콘 상품입니다. 300ml 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "네이버쇼핑 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EA%B1%B4%EC%B6%95%EC%9A%A9%20%EC%A4%91%EC%84%B1%20%EC%8B%A4%EB%A6%AC%EC%BD%98%20300ml",
+      "search_keywords": "실리콘, 중성실리콘, 건축용 실리콘, 300ml",
+      "sort_order": 1,
+      "quality_score": 99
+    },
+    {
+      "name": "스텐 앙카볼트 M10 x 100",
+      "slug": "스텐-앙카볼트-m10-x-100",
+      "price": 1800,
+      "spec": "M10 x 100mm",
+      "shipping": "택배",
+      "stock": 220,
+      "description": "스텐 앙카볼트 M10 x 100은 체결, 고정, 보강 작업에서 기본적으로 검토하는 철물류로, M10 x 100mm 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다. M10 x 100mm 규격 기준으로 검토할 수 있으며, 배송 방식은 택배 기준으로 안내합니다.",
+      "image_url": "/images/catalog/hardware.svg",
+      "is_active": true,
+      "category": "철물 > 앙카볼트",
+      "brand": "CK Select",
+      "unit": "1개",
+      "featured": true,
+      "category_main": "철물",
+      "category_sub": "앙카볼트",
+      "manufacturer": "국내 철물 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1개",
+        "shippingType": "택배",
+        "qualityScore": 97,
+        "collectionMode": "stage2-public-reference-seed",
+        "priceKnown": true
+      },
+      "detail_json": {
+        "overview": "스텐 앙카볼트 M10 x 100은 체결, 고정, 보강 작업에서 기본적으로 검토하는 철물류로, M10 x 100mm 기준에 맞춰 발주와 비교가 쉬운 형태로 정리한 상품입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다.",
+        "features": [
+          "앙카볼트 품목 기준으로 규격과 판매단위를 한눈에 확인하기 쉽습니다.",
+          "반복 구매와 현장 소모에 맞춰 가격 비교가 쉬운 기준으로 정리했습니다.",
+          "소량 보충이나 자재점 재고 운영에도 무난하게 대응할 수 있습니다."
+        ],
+        "applications": [
+          "난간 베이스 고정",
+          "설비 프레임 고정",
+          "배관 브라켓 체결"
+        ],
+        "specifications": "M10 x 100mm / 판매단위 1개 기준입니다. 실제 적용 전 치수, 수량, 부속 호환 여부를 다시 확인해 주세요.",
+        "shipping_notice": "일반 택배 가능 품목 기준으로 택배 안내를 우선 적용하며, 대량 주문 시 납품 일정과 운임이 달라질 수 있습니다.",
+        "caution": "피착재 상태와 허용 하중을 확인한 뒤 시공에 사용해 주세요."
+      },
+      "short_description": "철물 현장에서 자주 찾는 앙카볼트 상품입니다. M10 x 100mm 기준으로 바로 비교하기 좋고 재발주에도 무난한 품목입니다. 반복 구매와 현장 비축에 맞춰 바로 비교하기 쉬운 품목입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "네이버쇼핑 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%8A%A4%ED%85%90%20%EC%95%99%EC%B9%B4%EB%B3%BC%ED%8A%B8%20M10%20x%20100",
+      "search_keywords": "앙카볼트, M10, 고정볼트",
+      "sort_order": 6,
+      "quality_score": 97
+    },
+    {
+      "name": "스텐 앙카볼트 세트 M12 x 100",
+      "slug": "스텐-앙카볼트-세트-m12-x-100",
+      "price": 2100,
+      "spec": "M12 x 100mm",
+      "shipping": "택배",
+      "stock": 300,
+      "description": "콘크리트 고정이 필요한 현장에서 자주 찾는 규격의 앙카볼트 세트입니다. M12 x 100mm 규격 기준으로 검토하기 쉬운 구성으로 정리했으며, 소량 주문은 택배 기준으로 빠르게 확인할 수 있습니다.",
+      "image_url": "/images/catalog/hardware.svg",
+      "is_active": true,
+      "category": "철물 > 앙카볼트",
+      "brand": "CK Select",
+      "unit": "1세트",
+      "featured": true,
+      "category_main": "철물",
+      "category_sub": "앙카볼트",
+      "manufacturer": "국내 철물 협력사",
+      "origin": "대한민국",
+      "options_json": {
+        "packageUnit": "1세트",
+        "shippingType": "택배"
+      },
+      "detail_json": {
+        "overview": "콘크리트 고정이 필요한 현장에서 자주 찾는 규격의 앙카볼트 세트입니다. 우리몰에서는 현장 기준으로 다시 정리해 필요한 규격과 납품 방식을 빠르게 판단할 수 있도록 구성했습니다.",
+        "features": [
+          "기본 체결 부속을 한 번에 확인하기 쉬운 구성",
+          "현장 설비와 브라켓 고정용으로 자주 사용하는 규격"
+        ],
+        "useCases": [
+          "설비 브라켓 고정",
+          "난간 및 베이스 플레이트 체결",
+          "전기/기계 장비 고정"
+        ],
+        "specGuide": "M12 x 100mm / 판매단위 1세트 기준입니다. 실제 적용 전 현장 치수, 소요 수량, 부속 규격을 다시 확인해 주세요.",
+        "shippingNotice": "피착재 두께와 천공 깊이를 먼저 확인한 뒤 사용하세요. 재고 상황에 따라 출고 일정이 달라질 수 있습니다."
+      },
+      "short_description": "철물 현장에서 자주 찾는 앙카볼트 품목입니다. M12 x 100mm 기준으로 바로 비교하기 좋고 반복 구매에도 무난한 규격입니다.",
+      "quote_required": false,
+      "bulky_item": false,
+      "source_site": "네이버쇼핑 공개 검색",
+      "source_url": "https://search.shopping.naver.com/search/all?query=%EC%8A%A4%ED%85%90%20%EC%95%99%EC%B9%B4%EB%B3%BC%ED%8A%B8%20M12%20100",
+      "search_keywords": "앙카볼트, M12, 스텐앙카, 고정볼트",
+      "sort_order": 2
+    }
+  ],
+  "sourceFiles": [
+    "normalized_products_stage4.json",
+    "normalized_products_stage2.json",
+    "normalized_products.json"
+  ]
+}

@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#111827"/>
+  <rect x="72" y="72" width="1056" height="756" rx="40" fill="#1F2937"/>
+  <path d="M250 550L410 390L520 500L360 660L250 550Z" fill="#F59E0B"/>
+  <rect x="415" y="290" width="150" height="260" rx="36" transform="rotate(32 415 290)" fill="#E5E7EB"/>
+  <rect x="188" y="256" width="120" height="120" rx="28" fill="#D1D5DB"/>
+  <path d="M210 316H286" stroke="#4B5563" stroke-width="24" stroke-linecap="round"/>
+  <rect x="700" y="250" width="300" height="72" rx="20" fill="#10B981"/>
+  <rect x="700" y="360" width="250" height="28" rx="14" fill="#374151"/>
+  <rect x="700" y="410" width="300" height="28" rx="14" fill="#374151"/>
+  <rect x="700" y="460" width="228" height="28" rx="14" fill="#374151"/>
+  <text x="700" y="575" fill="#F8FAFC" font-size="82" font-family="Arial, sans-serif" font-weight="700">공구</text>
+  <text x="700" y="645" fill="#9CA3AF" font-size="38" font-family="Arial, sans-serif">드릴 · 그라인더 · 수공구</text>
+</svg>

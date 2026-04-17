@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#E2E8F0"/>
+  <rect x="120" y="120" width="960" height="660" rx="48" fill="#F8FAFC"/>
+  <rect x="190" y="220" width="360" height="360" rx="32" fill="#CBD5E1"/>
+  <rect x="640" y="240" width="290" height="42" rx="21" fill="#CBD5E1"/>
+  <rect x="640" y="318" width="220" height="28" rx="14" fill="#E2E8F0"/>
+  <rect x="640" y="380" width="320" height="28" rx="14" fill="#E2E8F0"/>
+  <rect x="640" y="442" width="260" height="28" rx="14" fill="#E2E8F0"/>
+  <rect x="640" y="540" width="180" height="56" rx="28" fill="#0F172A"/>
+  <rect x="842" y="540" width="180" height="56" rx="28" fill="#E2E8F0"/>
+  <path d="M333.195 301.789C353.734 269.217 400.266 269.217 420.805 301.789L479.618 395.097C501.459 429.753 476.549 475 435.814 475H318.186C277.451 475 252.541 429.753 274.382 395.097L333.195 301.789Z" fill="#94A3B8"/>
+  <circle cx="444" cy="304" r="42" fill="#F8FAFC"/>
+  <text x="600" y="712" text-anchor="middle" fill="#64748B" font-family="Arial, sans-serif" font-size="42" font-weight="700">
+    Product Image Pending
+  </text>
+</svg>

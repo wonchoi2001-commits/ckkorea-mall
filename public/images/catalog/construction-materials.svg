@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#1F2937"/>
+  <rect x="72" y="72" width="1056" height="756" rx="40" fill="#111827"/>
+  <rect x="120" y="200" width="220" height="360" rx="26" fill="#E5E7EB"/>
+  <rect x="370" y="160" width="260" height="420" rx="28" fill="#CBD5E1"/>
+  <rect x="160" y="240" width="140" height="18" rx="9" fill="#94A3B8"/>
+  <rect x="410" y="220" width="180" height="18" rx="9" fill="#94A3B8"/>
+  <rect x="700" y="250" width="320" height="72" rx="20" fill="#F59E0B"/>
+  <rect x="700" y="360" width="280" height="28" rx="14" fill="#374151"/>
+  <rect x="700" y="410" width="240" height="28" rx="14" fill="#374151"/>
+  <rect x="700" y="460" width="300" height="28" rx="14" fill="#374151"/>
+  <text x="700" y="575" fill="#F8FAFC" font-size="82" font-family="Arial, sans-serif" font-weight="700">건재</text>
+  <text x="700" y="645" fill="#9CA3AF" font-size="38" font-family="Arial, sans-serif">시멘트 · 몰탈 · 석고보드</text>
+</svg>

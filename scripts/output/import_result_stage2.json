@@ -1,0 +1,109 @@
+{
+  "importedAt": "2026-04-16T02:40:04.104Z",
+  "sourceFile": "normalized_products_stage2.json",
+  "totalInFile": 105,
+  "inserted": 0,
+  "updated": 105,
+  "failedCount": 0,
+  "failed": [],
+  "totalInDatabase": 112,
+  "categoryCountsInFile": {
+    "건재": 18,
+    "골재": 15,
+    "공구": 19,
+    "목재": 16,
+    "철물": 18,
+    "PVC배관 및 부속": 19
+  },
+  "featuredCandidates": [
+    {
+      "name": "건축용 중성 실리콘 300ml",
+      "slug": "건축용-중성-실리콘-300ml",
+      "categoryMain": "철물",
+      "qualityScore": 99
+    },
+    {
+      "name": "포틀랜드 시멘트 25kg",
+      "slug": "포틀랜드-시멘트-25kg",
+      "categoryMain": "건재",
+      "qualityScore": 97
+    },
+    {
+      "name": "혼합골재 40kg",
+      "slug": "혼합골재-40kg",
+      "categoryMain": "골재",
+      "qualityScore": 101
+    },
+    {
+      "name": "내수합판 11.5T 1220 x 2440",
+      "slug": "내수합판-115t-1220-x-2440",
+      "categoryMain": "목재",
+      "qualityScore": 101
+    },
+    {
+      "name": "PVC 엘보 50A",
+      "slug": "pvc-엘보-50a",
+      "categoryMain": "PVC배관 및 부속",
+      "qualityScore": 97
+    },
+    {
+      "name": "충전 해머드릴 20V",
+      "slug": "충전-해머드릴-20v",
+      "categoryMain": "공구",
+      "qualityScore": 97
+    },
+    {
+      "name": "스텐 앙카볼트 M10 x 100",
+      "slug": "스텐-앙카볼트-m10-x-100",
+      "categoryMain": "철물",
+      "qualityScore": 97
+    },
+    {
+      "name": "충전 임팩드라이버 18V",
+      "slug": "충전-임팩드라이버-18v",
+      "categoryMain": "공구",
+      "qualityScore": 97
+    },
+    {
+      "name": "침투성 방수제 18L",
+      "slug": "침투성-방수제-18l",
+      "categoryMain": "건재",
+      "qualityScore": 101
+    },
+    {
+      "name": "채움재 40kg",
+      "slug": "채움재-40kg",
+      "categoryMain": "골재",
+      "qualityScore": 101
+    }
+  ],
+  "availableColumns": [
+    "slug",
+    "name",
+    "price",
+    "spec",
+    "shipping",
+    "stock",
+    "description",
+    "image_url",
+    "is_active",
+    "category",
+    "brand",
+    "unit",
+    "featured",
+    "category_main",
+    "category_sub",
+    "manufacturer",
+    "origin",
+    "options_json",
+    "detail_json",
+    "short_description",
+    "quote_required",
+    "bulky_item",
+    "source_site",
+    "source_url",
+    "search_keywords",
+    "sort_order"
+  ],
+  "unavailableOptionalColumns": []
+}

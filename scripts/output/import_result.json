@@ -1,0 +1,41 @@
+{
+  "importedAt": "2026-04-16T01:59:57.631Z",
+  "sourceFile": "normalized_products.json",
+  "totalInFile": 49,
+  "inserted": 0,
+  "updated": 49,
+  "failedCount": 0,
+  "failed": [],
+  "totalInDatabase": 51,
+  "availableColumns": [
+    "slug",
+    "name",
+    "price",
+    "spec",
+    "shipping",
+    "stock",
+    "description",
+    "image_url",
+    "is_active",
+    "category",
+    "brand",
+    "unit",
+    "featured"
+  ],
+  "unavailableOptionalColumns": [
+    "category_main",
+    "category_sub",
+    "manufacturer",
+    "origin",
+    "options_json",
+    "detail_json",
+    "short_description",
+    "quote_required",
+    "bulky_item",
+    "source_site",
+    "source_url",
+    "search_keywords",
+    "sort_order"
+  ],
+  "note": "일부 확장 컬럼이 없어 기본 컬럼 위주로 import했습니다. 상세 메타데이터는 normalized_products.json에도 보관됩니다."
+}

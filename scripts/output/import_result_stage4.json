@@ -1,0 +1,97 @@
+{
+  "importedAt": "2026-04-16T15:25:31.719Z",
+  "sourceFile": "normalized_products_stage4.json",
+  "totalInFile": 220,
+  "inserted": 18,
+  "updated": 202,
+  "failedCount": 0,
+  "failed": [],
+  "totalInDatabase": 319,
+  "unavailableColumns": [],
+  "categoryCounts": {
+    "건재": 20,
+    "골재": 20,
+    "공구": 24,
+    "목재": 20,
+    "소모품/부자재": 24,
+    "안전용품": 20,
+    "전기자재": 24,
+    "접착제/실리콘": 20,
+    "철물": 24,
+    "PVC 배관 및 부속": 24
+  },
+  "featuredCandidates": [
+    {
+      "name": "스텐 웨지앙카 M10 x 100mm",
+      "slug": "스텐-웨지앙카-m10-x-100mm",
+      "categoryMain": "철물",
+      "qualityScore": 116
+    },
+    {
+      "name": "폴리머 타일접착제 20kg",
+      "slug": "폴리머-타일접착제-20kg",
+      "categoryMain": "건재",
+      "qualityScore": 108
+    },
+    {
+      "name": "세척모래 20kg",
+      "slug": "세척모래-20kg",
+      "categoryMain": "골재",
+      "qualityScore": 100
+    },
+    {
+      "name": "내수합판 18T 1220 x 2440",
+      "slug": "내수합판-18t-1220-x-2440",
+      "categoryMain": "목재",
+      "qualityScore": 108
+    },
+    {
+      "name": "PVC 볼밸브 20A",
+      "slug": "pvc-볼밸브-20a",
+      "categoryMain": "PVC 배관 및 부속",
+      "qualityScore": 110
+    },
+    {
+      "name": "스크류드라이버 세트 8pcs",
+      "slug": "스크류드라이버-세트-8pcs",
+      "categoryMain": "공구",
+      "qualityScore": 108
+    },
+    {
+      "name": "멀티탭 6구 5M",
+      "slug": "멀티탭-6구-5m",
+      "categoryMain": "전기자재",
+      "qualityScore": 106
+    },
+    {
+      "name": "경량 안전모 통풍형 백색",
+      "slug": "경량-안전모-통풍형-백색",
+      "categoryMain": "안전용품",
+      "qualityScore": 108
+    },
+    {
+      "name": "건축용 중성 실리콘 백색 300ml",
+      "slug": "건축용-중성-실리콘-백색-300ml",
+      "categoryMain": "접착제/실리콘",
+      "qualityScore": 108
+    },
+    {
+      "name": "청테이프 45mm x 25M",
+      "slug": "청테이프-45mm-x-25m",
+      "categoryMain": "소모품/부자재",
+      "qualityScore": 100
+    },
+    {
+      "name": "스텐 웨지앙카 M6 x 50mm",
+      "slug": "스텐-웨지앙카-m6-x-50mm",
+      "categoryMain": "철물",
+      "qualityScore": 110
+    },
+    {
+      "name": "PVC 배수 파이프 75A x 4M",
+      "slug": "pvc-배수-파이프-75a-x-4m",
+      "categoryMain": "PVC 배관 및 부속",
+      "qualityScore": 110
+    }
+  ]
+}

@@ -7,10 +7,16 @@ html {
 }
 
 body {
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at top, rgba(148, 163, 184, 0.12), transparent 28%),
+    #f8fafc;
   color: #0f172a;
 }
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(15, 23, 42, 0.14);
 }

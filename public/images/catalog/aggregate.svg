@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#111827"/>
+  <rect x="72" y="72" width="1056" height="756" rx="40" fill="#0F172A"/>
+  <path d="M150 580C245 445 355 390 480 390C605 390 705 445 780 580H150Z" fill="#D6D3D1"/>
+  <path d="M220 610C300 500 395 450 510 450C625 450 715 500 785 610H220Z" fill="#A8A29E"/>
+  <circle cx="290" cy="560" r="24" fill="#78716C"/>
+  <circle cx="390" cy="520" r="20" fill="#57534E"/>
+  <circle cx="515" cy="548" r="28" fill="#78716C"/>
+  <circle cx="610" cy="505" r="18" fill="#57534E"/>
+  <rect x="760" y="250" width="300" height="72" rx="20" fill="#F97316"/>
+  <rect x="760" y="360" width="250" height="28" rx="14" fill="#334155"/>
+  <rect x="760" y="410" width="280" height="28" rx="14" fill="#334155"/>
+  <rect x="760" y="460" width="210" height="28" rx="14" fill="#334155"/>
+  <text x="760" y="575" fill="#F8FAFC" font-size="82" font-family="Arial, sans-serif" font-weight="700">골재</text>
+  <text x="760" y="645" fill="#A8A29E" font-size="38" font-family="Arial, sans-serif">모래 · 자갈 · 쇄석 · 마사토</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#292524"/>
+  <rect x="72" y="72" width="1056" height="756" rx="40" fill="#1C1917"/>
+  <rect x="150" y="210" width="420" height="110" rx="24" fill="#C08457"/>
+  <rect x="190" y="345" width="420" height="110" rx="24" fill="#B45309"/>
+  <rect x="150" y="480" width="420" height="110" rx="24" fill="#D97706"/>
+  <path d="M190 265C240 225 320 225 370 265" stroke="#78350F" stroke-width="10"/>
+  <path d="M230 400C280 360 360 360 410 400" stroke="#78350F" stroke-width="10"/>
+  <path d="M190 535C240 495 320 495 370 535" stroke="#78350F" stroke-width="10"/>
+  <rect x="700" y="250" width="320" height="72" rx="20" fill="#F59E0B"/>
+  <rect x="700" y="360" width="260" height="28" rx="14" fill="#44403C"/>
+  <rect x="700" y="410" width="300" height="28" rx="14" fill="#44403C"/>
+  <rect x="700" y="460" width="225" height="28" rx="14" fill="#44403C"/>
+  <text x="700" y="575" fill="#F8FAFC" font-size="82" font-family="Arial, sans-serif" font-weight="700">목재</text>
+  <text x="700" y="645" fill="#D6D3D1" font-size="38" font-family="Arial, sans-serif">구조목 · 합판 · MDF · 데크재</text>
+</svg>
