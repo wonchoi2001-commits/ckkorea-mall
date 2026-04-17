@@ -1,16 +1,18 @@
 import { createBrowserClient } from "@supabase/ssr";
+import { getPublicSupabaseEnv, requirePublicSupabaseEnv } from "@/lib/env";
 
 export function createBrowserSupabaseClient() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const { url, anonKey } = requirePublicSupabaseEnv();
 
-  if (!supabaseUrl) {
-    throw new Error("NEXT_PUBLIC_SUPABASE_URL이 설정되지 않았습니다.");
+  return createBrowserClient(url, anonKey);
+}
+
+export function createOptionalBrowserSupabaseClient() {
+  const env = getPublicSupabaseEnv();
+
+  if (!env) {
+    return null;
   }
 
-  if (!supabaseAnonKey) {
-    throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY가 설정되지 않았습니다.");
-  }
-
-  return createBrowserClient(supabaseUrl, supabaseAnonKey);
+  return createBrowserClient(env.url, env.anonKey);
 }

@@ -1,41 +1,16 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
-
-function getSupabaseUrl() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-
-  if (!supabaseUrl) {
-    throw new Error("NEXT_PUBLIC_SUPABASE_URL이 설정되지 않았습니다.");
-  }
-
-  return supabaseUrl;
-}
-
-function getSupabaseAnonKey() {
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-  if (!supabaseAnonKey) {
-    throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY가 설정되지 않았습니다.");
-  }
-
-  return supabaseAnonKey;
-}
-
-function getSupabaseServiceRoleKey() {
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!serviceRoleKey) {
-    throw new Error("SUPABASE_SERVICE_ROLE_KEY가 설정되지 않았습니다.");
-  }
-
-  return serviceRoleKey;
-}
+import {
+  requirePublicSupabaseEnv,
+  requireSupabaseServiceRoleKey,
+} from "@/lib/env";
 
 export async function createServerSupabaseClient() {
   const cookieStore = await cookies();
+  const { url, anonKey } = requirePublicSupabaseEnv();
 
-  return createServerClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+  return createServerClient(url, anonKey, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -54,7 +29,9 @@ export async function createServerSupabaseClient() {
 }
 
 export function createAdminSupabaseClient() {
-  return createClient(getSupabaseUrl(), getSupabaseServiceRoleKey(), {
+  const { url } = requirePublicSupabaseEnv();
+
+  return createClient(url, requireSupabaseServiceRoleKey(), {
     auth: {
       autoRefreshToken: false,
       persistSession: false,

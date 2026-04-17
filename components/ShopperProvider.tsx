@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 import type { Session } from "@supabase/supabase-js";
-import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { createOptionalBrowserSupabaseClient } from "@/lib/supabase/client";
 import type { AccountSummary, MemberProfile, SavedAddress, ShopperContextType } from "@/lib/types";
 
 const FAVORITES_STORAGE_KEY = "ckkorea-favorites";
@@ -45,7 +45,7 @@ function moveIdToFront(ids: string[], id: string, limit = RECENT_LIMIT) {
 }
 
 export function ShopperProvider({ children }: { children: React.ReactNode }) {
-  const supabase = useMemo(() => createBrowserSupabaseClient(), []);
+  const supabase = useMemo(() => createOptionalBrowserSupabaseClient(), []);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<MemberProfile | null>(null);
   const [addresses, setAddresses] = useState<SavedAddress[]>([]);
@@ -83,7 +83,7 @@ export function ShopperProvider({ children }: { children: React.ReactNode }) {
   const reloadAccount = async (currentSession?: Session | null) => {
     const activeSession = currentSession ?? session;
 
-    if (!activeSession?.user) {
+    if (!supabase || !activeSession?.user) {
       loadGuestState();
       setLoading(false);
       return;
@@ -132,6 +132,15 @@ export function ShopperProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     mountedRef.current = true;
+
+    if (!supabase) {
+      loadGuestState();
+      setLoading(false);
+
+      return () => {
+        mountedRef.current = false;
+      };
+    }
 
     const initialize = async () => {
       const {
@@ -218,6 +227,11 @@ export function ShopperProvider({ children }: { children: React.ReactNode }) {
   const signOut = useCallback(async () => {
     writeStoredIds(FAVORITES_STORAGE_KEY, favoriteIds);
     writeStoredIds(RECENT_STORAGE_KEY, recentIds);
+
+    if (!supabase) {
+      return;
+    }
+
     await supabase.auth.signOut();
   }, [favoriteIds, recentIds, supabase]);
 
